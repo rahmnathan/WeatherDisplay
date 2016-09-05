@@ -30,12 +30,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="BackgroundImageProvider" target="1.5" />
-      <module name="CurrentWeather" target="1.5" />
-      <module name="Executor" target="1.5" />
-      <module name="GUI" target="1.5" />
-      <module name="WeatherDisplay" target="1.5" />
-      <module name="WeatherInfoProvider" target="1.5" />
+      <module name="BackgroundImageProvider" target="1.8" />
+      <module name="CurrentWeather" target="1.8" />
+      <module name="Executor" target="1.8" />
+      <module name="GUI" target="1.8" />
+      <module name="WeatherDisplay" target="1.8" />
+      <module name="WeatherInfoProvider" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
