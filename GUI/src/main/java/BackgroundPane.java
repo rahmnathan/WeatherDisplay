@@ -15,8 +15,8 @@ public class BackgroundPane extends JPanel {
     public void paintComponent(Graphics g){
 
         Image image = null;
-
-        super.paintComponent(g);
+//
+//        super.paintComponent(g);
 
         try {
             image = ImageIO.read(new ByteArrayInputStream(backgroundImage));

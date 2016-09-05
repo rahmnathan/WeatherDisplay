@@ -59,7 +59,7 @@ public class CurrentWeatherProvider {
             currentWeather.setIcon(getIcon((String) weather.get("icon")));
 
             JSONObject main = (JSONObject) jsonObject.get("main");
-            currentWeather.setTemp(String.valueOf(main.get("temp")));
+            currentWeather.setTemp((String.valueOf(main.get("temp"))).split("\\.")[0]);
             currentWeather.setHighTemp(String.valueOf(main.get("temp_max")));
             currentWeather.setLowTemp(String.valueOf(main.get("temp_min")));
             currentWeather.setHumidity(String.valueOf(main.get("humidity")));
