@@ -11,7 +11,9 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/Commute/pom.xml" />
         <option value="$PROJECT_DIR$/DataUpdater/pom.xml" />
+        <option value="$PROJECT_DIR$/Executor/pom.xml" />
       </set>
     </option>
   </component>

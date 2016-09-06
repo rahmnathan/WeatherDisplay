@@ -24,13 +24,13 @@
         <processorPath useClasspath="true" />
         <module name="BackgroundImageProvider" />
         <module name="CalendarProvider" />
-        <module name="Commute" />
         <module name="CommuteProvider" />
         <module name="CurrentWeather" />
         <module name="DriveTime" />
         <module name="DriveTimeProvider" />
-        <module name="Executor" />
+        <module name="Executable" />
         <module name="GUI" />
+        <module name="RestServer" />
         <module name="WeatherInfoProvider" />
       </profile>
     </annotationProcessing>
@@ -43,8 +43,10 @@
       <module name="DataUpdater" target="1.8" />
       <module name="DriveTime" target="1.8" />
       <module name="DriveTimeProvider" target="1.8" />
+      <module name="Executable" target="1.8" />
       <module name="Executor" target="1.8" />
       <module name="GUI" target="1.8" />
+      <module name="RestServer" target="1.8" />
       <module name="WeatherDisplay" target="1.8" />
       <module name="WeatherInfoProvider" target="1.8" />
     </bytecodeTargetLevel>

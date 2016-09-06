@@ -15,13 +15,12 @@
 
     <modules>
         <module>WeatherInfoProvider</module>
+        <module>Executable</module>
+        <module>CalendarProvider</module>
+        <module>CommuteProvider</module>
         <module>CurrentWeather</module>
-        <module>Executor</module>
         <module>GUI</module>
         <module>BackgroundImageProvider</module>
-        <module>CommuteProvider</module>
-        <module>Commute</module>
-        <module>CalendarProvider</module>
     </modules>
 
     <dependencies>
@@ -40,6 +39,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>1.4.0.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -53,7 +57,25 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.4.0.RELEASE</version>
+            </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>spring-releases</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-releases</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>
