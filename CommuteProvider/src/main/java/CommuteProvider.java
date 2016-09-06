@@ -8,7 +8,7 @@ import java.net.URL;
 
 public class CommuteProvider {
 
-    String uri = "";
+    String uri = "https://maps.googleapis.com/maps/api/directions/json?origin=44.94638,-93.328981&destination=44.807234,-93.355154&key=AIzaSyCJNMBAobikR_slei0YiXZdqCgdvoFHO_Q";
 
     public String getCommute(){
 

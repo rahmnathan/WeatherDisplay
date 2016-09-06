@@ -21,6 +21,7 @@
         <module>BackgroundImageProvider</module>
         <module>CommuteProvider</module>
         <module>Commute</module>
+        <module>CalendarProvider</module>
     </modules>
 
     <dependencies>

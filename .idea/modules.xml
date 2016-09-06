@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BackgroundImageProvider/BackgroundImageProvider.iml" filepath="$PROJECT_DIR$/BackgroundImageProvider/BackgroundImageProvider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CalendarProvider/CalendarProvider.iml" filepath="$PROJECT_DIR$/CalendarProvider/CalendarProvider.iml" />
       <module fileurl="file://$PROJECT_DIR$/Commute/DriveTime.iml" filepath="$PROJECT_DIR$/Commute/DriveTime.iml" />
       <module fileurl="file://$PROJECT_DIR$/CommuteProvider/CommuteProvider.iml" filepath="$PROJECT_DIR$/CommuteProvider/CommuteProvider.iml" />
       <module fileurl="file://$PROJECT_DIR$/CurrentWeather/CurrentWeather.iml" filepath="$PROJECT_DIR$/CurrentWeather/CurrentWeather.iml" />

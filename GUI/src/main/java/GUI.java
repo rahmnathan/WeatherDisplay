@@ -126,7 +126,7 @@ public class GUI {
             }
         });
 
-        Timer currentWeatherUpdater = new Timer(100000, new ActionListener(){
+        Timer currentWeatherUpdater = new Timer(1000000, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateCurrentWeather();
@@ -149,6 +149,7 @@ public class GUI {
 
         backgroundImageUpdater.start();
         currentWeatherUpdater.start();
+        commuteUpdater.start();
         timeUpdater.start();
     }
 

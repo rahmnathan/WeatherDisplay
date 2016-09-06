@@ -23,6 +23,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="BackgroundImageProvider" />
+        <module name="CalendarProvider" />
         <module name="Commute" />
         <module name="CommuteProvider" />
         <module name="CurrentWeather" />
@@ -35,6 +36,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="BackgroundImageProvider" target="1.8" />
+      <module name="CalendarProvider" target="1.8" />
       <module name="Commute" target="1.8" />
       <module name="CommuteProvider" target="1.8" />
       <module name="CurrentWeather" target="1.8" />
