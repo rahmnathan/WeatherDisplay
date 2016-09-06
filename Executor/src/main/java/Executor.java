@@ -6,7 +6,9 @@ public class Executor {
 
         CurrentWeather currentWeather = new CurrentWeatherProvider().getCurrentWeather();
 
-        GUI.startGUI(currentWeather, backgroundImage);
+        GUI display = new GUI();
+
+        display.startGUI(currentWeather, backgroundImage);
 
     }
 }

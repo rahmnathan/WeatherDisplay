@@ -24,6 +24,7 @@
         <processorPath useClasspath="true" />
         <module name="BackgroundImageProvider" />
         <module name="CurrentWeather" />
+        <module name="DataUpdater" />
         <module name="Executor" />
         <module name="GUI" />
         <module name="WeatherInfoProvider" />
@@ -32,6 +33,7 @@
     <bytecodeTargetLevel>
       <module name="BackgroundImageProvider" target="1.8" />
       <module name="CurrentWeather" target="1.8" />
+      <module name="DataUpdater" target="1.8" />
       <module name="Executor" target="1.8" />
       <module name="GUI" target="1.8" />
       <module name="WeatherDisplay" target="1.8" />

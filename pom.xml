@@ -19,6 +19,7 @@
         <module>Executor</module>
         <module>GUI</module>
         <module>BackgroundImageProvider</module>
+        <module>DataUpdater</module>
     </modules>
 
     <dependencies>
