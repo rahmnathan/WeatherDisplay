@@ -2,6 +2,8 @@ import org.apache.commons.lang3.text.WordUtils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 
 public class GUI {
@@ -25,8 +27,9 @@ public class GUI {
     private JLabel weatherDescription;
     private JLabel currentDate;
 
+    public GUI(){}
 
-    public void startGUI(CurrentWeather currentWeather, byte[] backgroundImage){
+    public void startGUI(byte[] backgroundImage){
 
         frame.setUndecorated(true);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -35,16 +38,10 @@ public class GUI {
         backgroundPane = new BackgroundPane(backgroundImage);
         backgroundPane.setLayout(new GridLayout());
 
-        currentWeatherIcon = new CurrentWeatherIconLabel(currentWeather.getIcon());
-        currentWeatherIcon.setLocation(10,10);
-        currentWeatherIcon.setSize(250,250);
-
         panel.setOpaque(false);
         panel.setLayout(null);
-        panel.add(currentWeatherIcon);
 
         currentTemp = new JLabel("Current Temp", SwingConstants.CENTER);
-        currentTemp.setText(currentWeather.getTemp() + "°F");
         currentTemp.setLocation(currentWeatherHorizontal, currentWeatherVertical);
         currentTemp.setSize(200,60);
         currentTemp.setFont(new Font("Serif", Font.BOLD, 70));
@@ -52,7 +49,6 @@ public class GUI {
         panel.add(currentTemp);
 
         highLowTemps = new JLabel("High Temp", SwingConstants.CENTER);
-        highLowTemps.setText(currentWeather.getLowTemp().split("\\.")[0] + "°F/" + currentWeather.getHighTemp().split("\\.")[0] + "°F");
         highLowTemps.setLocation(currentWeatherHorizontal + 20, currentWeatherVertical + 70);
         highLowTemps.setSize(150,30);
         highLowTemps.setFont(new Font("Serif", Font.BOLD, 20));
@@ -60,7 +56,6 @@ public class GUI {
         panel.add(highLowTemps);
 
         windSpeed = new JLabel("Wind Info", SwingConstants.CENTER);
-        windSpeed.setText(currentWeather.getWindSpeed().split("\\.")[0] + " Mph");
         windSpeed.setLocation(currentWeatherHorizontal + 15, currentWeatherVertical + 110);
         windSpeed.setSize(200, 50);
         windSpeed.setFont(new Font("Serif", Font.BOLD, 45));
@@ -68,7 +63,6 @@ public class GUI {
         panel.add(windSpeed);
 
         windDirection = new JLabel("Wind Direction", SwingConstants.CENTER);
-        windDirection.setText(currentWeather.getWindDirection());
         windDirection.setLocation(currentWeatherHorizontal, currentWeatherVertical + 170);
         windDirection.setSize(200, 30);
         windDirection.setFont(new Font("Serif", Font.BOLD, 30));
@@ -86,7 +80,6 @@ public class GUI {
         weatherDescription = new JLabel("Weather Descripiton", SwingConstants.CENTER);
         weatherDescription.setSize(450, 170);
         weatherDescription.setLocation(0, 240);
-        weatherDescription.setText("<html><center>" + WordUtils.capitalize(currentWeather.getSky()) + "</center></html>");
         weatherDescription.setForeground(white);
         weatherDescription.setFont(new Font("Serif", Font.BOLD, 50));
         panel.add(weatherDescription);
@@ -99,11 +92,29 @@ public class GUI {
         currentDate.setForeground(white);
         panel.add(currentDate);
 
+        updateCurrentWeather();
         backgroundPane.add(panel);
 
         frame.add(backgroundPane);
         frame.pack();
         frame.setVisible(true);
+
+        Timer timeUpdater = new Timer(10000, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateTime();
+            }
+        });
+
+        Timer currentWeatherUpdater = new Timer(1000000, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateCurrentWeather();
+            }
+        });
+
+        currentWeatherUpdater.start();
+        timeUpdater.start();
     }
 
     public void updateTime(){
@@ -128,6 +139,20 @@ public class GUI {
 
         currentDate.setText(date);
         repaint();
+    }
+
+    private void updateCurrentWeather(){
+        CurrentWeather currentWeather = new CurrentWeatherProvider().getCurrentWeather();
+        currentTemp.setText(currentWeather.getTemp() + "°F");
+        windDirection.setText(currentWeather.getWindDirection());
+        currentWeatherIcon = new CurrentWeatherIconLabel(currentWeather.getIcon());
+        currentWeatherIcon.setLocation(10,10);
+        currentWeatherIcon.setSize(250,250);
+        panel.add(currentWeatherIcon);
+        highLowTemps.setText(currentWeather.getLowTemp().split("\\.")[0] + "°F/" + currentWeather.getHighTemp().split("\\.")[0] + "°F");
+        windSpeed.setText(currentWeather.getWindSpeed().split("\\.")[0] + " Mph");
+        weatherDescription.setText("<html><center>" + WordUtils.capitalize(currentWeather.getSky()) + "</center></html>");
+
     }
 
     private void repaint(){

@@ -4,11 +4,9 @@ public class Executor {
 
         byte[] backgroundImage = new BackgroundImageProvider().getBackgroundImage();
 
-        CurrentWeather currentWeather = new CurrentWeatherProvider().getCurrentWeather();
-
         GUI display = new GUI();
 
-        display.startGUI(currentWeather, backgroundImage);
+        display.startGUI(backgroundImage);
 
     }
 }

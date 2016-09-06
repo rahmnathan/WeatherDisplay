@@ -1,8 +1,6 @@
-import java.util.Date;
-
 public class DateTimeUpdater extends Thread {
 
-    private static GUI gui;
+    private GUI gui;
 
     public DateTimeUpdater(GUI gui){
         this.gui = gui;
