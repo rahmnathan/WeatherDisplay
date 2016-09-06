@@ -2,13 +2,10 @@ public class Executor {
 
     public static void main(String[] args) {
 
-//        byte[] backgroundImage = new BackgroundImageProvider().getBackgroundImage();
-//
-//        GUI display = new GUI();
-//
-//        display.startGUI(backgroundImage);
+        byte[] backgroundImage = new BackgroundImageProvider().getBackgroundImage();
 
-        new CommuteProvider().getCommute();
+        GUI display = new GUI();
 
+        display.startGUI(backgroundImage);
     }
 }

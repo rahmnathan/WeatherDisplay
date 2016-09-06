@@ -26,6 +26,7 @@ public class GUI {
     private JLabel currentTime;
     private JLabel weatherDescription;
     private JLabel currentDate;
+    private JLabel commuteTime;
 
     public GUI(){}
 
@@ -74,19 +75,19 @@ public class GUI {
         windDirection.setForeground(white);
         panel.add(windDirection);
 
-        currentTime = new JLabel("Current Time", SwingConstants.CENTER);
-        currentTime.setSize(500, 150);
-        currentTime.setLocation(dateTimeHorizontal, dateTimeVertical);
-        currentTime.setForeground(white);
-        currentTime.setFont(new Font("Serif", Font.BOLD, 150));
-        panel.add(currentTime);
-
         weatherDescription = new JLabel("Weather Descripiton", SwingConstants.CENTER);
         weatherDescription.setSize(450, 170);
         weatherDescription.setLocation(0, 240);
         weatherDescription.setForeground(white);
         weatherDescription.setFont(new Font("Serif", Font.BOLD, 50));
         panel.add(weatherDescription);
+
+        currentTime = new JLabel("Current Time", SwingConstants.CENTER);
+        currentTime.setSize(500, 150);
+        currentTime.setLocation(dateTimeHorizontal, dateTimeVertical);
+        currentTime.setForeground(white);
+        currentTime.setFont(new Font("Serif", Font.BOLD, 150));
+        panel.add(currentTime);
 
         currentDate = new JLabel("Current Date", SwingConstants.CENTER);
         currentDate.setSize(400, 110);
@@ -95,6 +96,21 @@ public class GUI {
         currentDate.setForeground(white);
         updateDateTime();
         panel.add(currentDate);
+
+        commuteTime = new JLabel("Commute Time", SwingConstants.CENTER);
+        commuteTime.setSize(250, 60);
+        commuteTime.setLocation(540, 90);
+        commuteTime.setFont(new Font("Serif", Font.BOLD, 50));
+        commuteTime.setForeground(white);
+        updateCommute();
+        panel.add(commuteTime);
+
+        JLabel nathansCommute = new JLabel("Nathan's Commute", SwingConstants.CENTER);
+        nathansCommute.setSize(350, 100);
+        nathansCommute.setLocation(500, 10);
+        nathansCommute.setFont(new Font("Serif", Font.BOLD, 30));
+        nathansCommute.setForeground(white);
+        panel.add(nathansCommute);
 
         updateCurrentWeather();
         backgroundPane.add(panel);
@@ -121,6 +137,13 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateBackgroundImage();
+            }
+        });
+
+        Timer commuteUpdater = new Timer(100000, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateCommute();
             }
         });
 
@@ -171,6 +194,20 @@ public class GUI {
         backgroundPane.setLayout(new GridLayout());
         backgroundPane.add(panel);
         frame.add(backgroundPane);
+        frame.repaint();
+    }
+
+    private void updateCommute(){
+        String commute = new CommuteProvider().getCommute();
+        Integer commuteInteger = Integer.valueOf(commute.substring(0, commute.length()-5));
+        commuteTime.setText(commute);
+        if(commuteInteger < 23){
+            commuteTime.setForeground(new Color(0x00DD00));
+        } else if (commuteInteger < 30){
+            commuteTime.setForeground(new Color(0xC98311));
+        } else {
+            commuteTime.setForeground(new Color(0xDD0003));
+        }
         frame.repaint();
     }
 }
