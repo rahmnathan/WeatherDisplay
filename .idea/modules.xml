@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BackgroundImageProvider/BackgroundImageProvider.iml" filepath="$PROJECT_DIR$/BackgroundImageProvider/BackgroundImageProvider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Commute/DriveTime.iml" filepath="$PROJECT_DIR$/Commute/DriveTime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CommuteProvider/CommuteProvider.iml" filepath="$PROJECT_DIR$/CommuteProvider/CommuteProvider.iml" />
       <module fileurl="file://$PROJECT_DIR$/CurrentWeather/CurrentWeather.iml" filepath="$PROJECT_DIR$/CurrentWeather/CurrentWeather.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DataUpdater/DataUpdater.iml" filepath="$PROJECT_DIR$/DataUpdater/DataUpdater.iml" />
       <module fileurl="file://$PROJECT_DIR$/Executor/Executor.iml" filepath="$PROJECT_DIR$/Executor/Executor.iml" />
       <module fileurl="file://$PROJECT_DIR$/GUI/GUI.iml" filepath="$PROJECT_DIR$/GUI/GUI.iml" />
       <module fileurl="file://$PROJECT_DIR$/WeatherDisplay.iml" filepath="$PROJECT_DIR$/WeatherDisplay.iml" />

@@ -23,8 +23,11 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="BackgroundImageProvider" />
+        <module name="Commute" />
+        <module name="CommuteProvider" />
         <module name="CurrentWeather" />
-        <module name="DataUpdater" />
+        <module name="DriveTime" />
+        <module name="DriveTimeProvider" />
         <module name="Executor" />
         <module name="GUI" />
         <module name="WeatherInfoProvider" />
@@ -32,8 +35,12 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="BackgroundImageProvider" target="1.8" />
+      <module name="Commute" target="1.8" />
+      <module name="CommuteProvider" target="1.8" />
       <module name="CurrentWeather" target="1.8" />
       <module name="DataUpdater" target="1.8" />
+      <module name="DriveTime" target="1.8" />
+      <module name="DriveTimeProvider" target="1.8" />
       <module name="Executor" target="1.8" />
       <module name="GUI" target="1.8" />
       <module name="WeatherDisplay" target="1.8" />

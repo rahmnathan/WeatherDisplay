@@ -41,6 +41,11 @@ public class GUI {
         panel.setOpaque(false);
         panel.setLayout(null);
 
+        currentWeatherIcon = new JLabel();
+        currentWeatherIcon.setLocation(10,10);
+        currentWeatherIcon.setSize(250,250);
+        panel.add(currentWeatherIcon);
+
         currentTemp = new JLabel("Current Temp", SwingConstants.CENTER);
         currentTemp.setLocation(currentWeatherHorizontal, currentWeatherVertical);
         currentTemp.setSize(200,60);
@@ -72,7 +77,6 @@ public class GUI {
         currentTime = new JLabel("Current Time", SwingConstants.CENTER);
         currentTime.setSize(500, 150);
         currentTime.setLocation(dateTimeHorizontal, dateTimeVertical);
-        updateTime();
         currentTime.setForeground(white);
         currentTime.setFont(new Font("Serif", Font.BOLD, 150));
         panel.add(currentTime);
@@ -87,9 +91,9 @@ public class GUI {
         currentDate = new JLabel("Current Date", SwingConstants.CENTER);
         currentDate.setSize(400, 110);
         currentDate.setLocation(dateTimeHorizontal + 50, dateTimeVertical + 130);
-        updateDate();
         currentDate.setFont(new Font("Serif", Font.BOLD, 50));
         currentDate.setForeground(white);
+        updateDateTime();
         panel.add(currentDate);
 
         updateCurrentWeather();
@@ -102,22 +106,30 @@ public class GUI {
         Timer timeUpdater = new Timer(10000, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                updateTime();
+                updateDateTime();
             }
         });
 
-        Timer currentWeatherUpdater = new Timer(1000000, new ActionListener(){
+        Timer currentWeatherUpdater = new Timer(100000, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateCurrentWeather();
             }
         });
 
+        Timer backgroundImageUpdater = new Timer(10000000, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateBackgroundImage();
+            }
+        });
+
+        backgroundImageUpdater.start();
         currentWeatherUpdater.start();
         timeUpdater.start();
     }
 
-    public void updateTime(){
+    public void updateDateTime(){
 
         String[] dateTime = LocalDateTime.now().toString().split("T");
         String[] timeStampArray = dateTime[1].split(":");
@@ -127,24 +139,20 @@ public class GUI {
         }
         String hourString = String.valueOf(hour);
         String timeStamp = hourString + ":" + timeStampArray[1];
-
-        currentTime.setText(timeStamp);
-        repaint();
-    }
-
-    public void updateDate(){
-        String[] dateTime = LocalDateTime.now().toString().split("T");
         String[] dateArray = dateTime[0].split("-");
         String date = dateArray[1] + "-" + dateArray[2] + "-" + dateArray[0];
 
         currentDate.setText(date);
-        repaint();
+
+        currentTime.setText(timeStamp);
+        frame.repaint();
     }
 
     private void updateCurrentWeather(){
         CurrentWeather currentWeather = new CurrentWeatherProvider().getCurrentWeather();
         currentTemp.setText(currentWeather.getTemp() + "°F");
         windDirection.setText(currentWeather.getWindDirection());
+        panel.remove(currentWeatherIcon);
         currentWeatherIcon = new CurrentWeatherIconLabel(currentWeather.getIcon());
         currentWeatherIcon.setLocation(10,10);
         currentWeatherIcon.setSize(250,250);
@@ -152,10 +160,17 @@ public class GUI {
         highLowTemps.setText(currentWeather.getLowTemp().split("\\.")[0] + "°F/" + currentWeather.getHighTemp().split("\\.")[0] + "°F");
         windSpeed.setText(currentWeather.getWindSpeed().split("\\.")[0] + " Mph");
         weatherDescription.setText("<html><center>" + WordUtils.capitalize(currentWeather.getSky()) + "</center></html>");
-
+        frame.repaint();
     }
 
-    private void repaint(){
+    private void updateBackgroundImage(){
+        byte[] backgroundImage = new BackgroundImageProvider().getBackgroundImage();
+
+        frame.remove(backgroundPane);
+        backgroundPane = new BackgroundPane(backgroundImage);
+        backgroundPane.setLayout(new GridLayout());
+        backgroundPane.add(panel);
+        frame.add(backgroundPane);
         frame.repaint();
     }
 }

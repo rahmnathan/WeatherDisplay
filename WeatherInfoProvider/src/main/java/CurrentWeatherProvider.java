@@ -65,7 +65,7 @@ public class CurrentWeatherProvider {
             currentWeather.setHumidity(String.valueOf(main.get("humidity")));
 
             JSONObject wind = (JSONObject) jsonObject.get("wind");
-            currentWeather.setWindDirection(getWindDirection((Integer) wind.get("deg")));
+            currentWeather.setWindDirection(getWindDirection((Number) wind.get("deg")));
             currentWeather.setWindSpeed(String.valueOf(wind.get("speed")));
 
         }catch(JSONException e){
@@ -75,7 +75,9 @@ public class CurrentWeatherProvider {
         return currentWeather;
     }
 
-    private String getWindDirection(Integer degree){
+    private String getWindDirection(Number degreeInput){
+
+        Integer degree = degreeInput.intValue();
 
         if(degree < 22.5 || degree > 337.5){
             return "North";

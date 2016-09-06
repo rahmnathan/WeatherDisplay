@@ -19,7 +19,8 @@
         <module>Executor</module>
         <module>GUI</module>
         <module>BackgroundImageProvider</module>
-        <module>DataUpdater</module>
+        <module>CommuteProvider</module>
+        <module>Commute</module>
     </modules>
 
     <dependencies>
