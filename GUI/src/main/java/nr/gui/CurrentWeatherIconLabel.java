@@ -5,9 +5,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.ByteArrayInputStream;
 
-public class CurrentWeatherIconLabel extends JLabel {
+class CurrentWeatherIconLabel extends JLabel {
 
-    private byte[] image;
+    private final byte[] image;
 
     public CurrentWeatherIconLabel(byte[] image){
         this.image = image;

@@ -5,9 +5,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.ByteArrayInputStream;
 
-public class BackgroundPane extends JPanel {
+class BackgroundPane extends JPanel {
 
-    private byte[] backgroundImage;
+    private final byte[] backgroundImage;
 
     public BackgroundPane(byte[] image){
         this.backgroundImage = image;

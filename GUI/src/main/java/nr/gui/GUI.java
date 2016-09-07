@@ -8,8 +8,6 @@ import org.apache.commons.lang3.text.WordUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.ServiceLoader;
@@ -25,9 +23,9 @@ public class GUI {
     private String currentWeatherCityId = "5045021";
 
 
-    private static JFrame frame = new JFrame("Weather Display");
-    private static JPanel panel = new JPanel();
-    private static Color white = new Color(0xFFFFFF);
+    private static final JFrame frame = new JFrame("Weather Display");
+    private static final JPanel panel = new JPanel();
+    private static final Color white = new Color(0xFFFFFF);
 
     private static final int dateTimeHorizontal = 1400;
     private static final int dateTimeVertical = 20;
@@ -139,33 +137,13 @@ public class GUI {
         frame.pack();
         frame.setVisible(true);
 
-        Timer timeUpdater = new Timer(10000, new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                updateDateTime();
-            }
-        });
+        Timer timeUpdater = new Timer(10000, e -> updateDateTime());
 
-        Timer currentWeatherUpdater = new Timer(1000000, new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                updateCurrentWeather();
-            }
-        });
+        Timer currentWeatherUpdater = new Timer(1000000, e -> updateCurrentWeather());
 
-        Timer backgroundImageUpdater = new Timer(10000000, new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                updateBackgroundImage();
-            }
-        });
+        Timer backgroundImageUpdater = new Timer(10000000, e -> updateBackgroundImage());
 
-        Timer commuteUpdater = new Timer(100000, new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                updateCommute();
-            }
-        });
+        Timer commuteUpdater = new Timer(100000, e -> updateCommute());
 
         backgroundImageUpdater.start();
         currentWeatherUpdater.start();
@@ -173,7 +151,7 @@ public class GUI {
         timeUpdater.start();
     }
 
-    public void updateDateTime(){
+    private void updateDateTime(){
 
         String[] dateTime = LocalDateTime.now().toString().split("T");
         String[] timeStampArray = dateTime[1].split(":");
