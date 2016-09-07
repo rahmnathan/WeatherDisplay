@@ -1,4 +1,4 @@
-package nr.currentweather;
+package nr.currentweatherprovider;
 
 public class CurrentWeather {
 
