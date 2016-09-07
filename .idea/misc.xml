@@ -13,6 +13,7 @@
       <set>
         <option value="$PROJECT_DIR$/CalendarProvider/pom.xml" />
         <option value="$PROJECT_DIR$/Commute/pom.xml" />
+        <option value="$PROJECT_DIR$/CurrentWeather/pom.xml" />
         <option value="$PROJECT_DIR$/DataUpdater/pom.xml" />
         <option value="$PROJECT_DIR$/Executor/pom.xml" />
       </set>

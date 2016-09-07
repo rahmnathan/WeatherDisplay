@@ -27,7 +27,6 @@
         <module name="BingBackgroundImageProvider" />
         <module name="CommuteProvider" />
         <module name="CommuteProviderAPI" />
-        <module name="CurrentWeather" />
         <module name="CurrentWeatherProvider" />
         <module name="CurrentWeatherProviderAPI" />
         <module name="DriveTime" />

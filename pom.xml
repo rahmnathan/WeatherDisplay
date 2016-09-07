@@ -15,7 +15,6 @@
 
     <modules>
         <module>Executable</module>
-        <module>CurrentWeather</module>
         <module>GUI</module>
         <module>OpenWeatherMapCurrentWeatherProvider</module>
         <module>BingBackgroundImageProvider</module>
