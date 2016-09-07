@@ -10,7 +10,7 @@ import java.net.URL;
 
 public class CommuteProvider {
 
-    public String getCommute(String startLocation, String endLocation){
+    public String getCommuteTime(String startLocation, String endLocation){
 
         return getTime(getCommuteContent(startLocation, endLocation));
     }

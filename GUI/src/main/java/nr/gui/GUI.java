@@ -47,6 +47,8 @@ public class GUI {
 
     public void startGUI(){
 
+        initializeDataProviders();
+
         frame.setUndecorated(true);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -215,7 +217,7 @@ public class GUI {
     }
 
     public void updateCommute(){
-        String commute = commuteProvider.getCommute(commuteStartLocation, commuteEndLocation);
+        String commute = commuteProvider.getCommuteTime(commuteStartLocation, commuteEndLocation);
         Integer commuteInteger = Integer.valueOf(commute.substring(0, commute.length()-5));
         commuteTime.setText(commute);
         if(commuteInteger < 23){
@@ -236,5 +238,8 @@ public class GUI {
     }
     public void setCurrentWeatherCityId(String currentWeatherCityId){
         this.currentWeatherCityId = currentWeatherCityId;
+    }
+
+    private void initializeDataProviders(){
     }
 }
