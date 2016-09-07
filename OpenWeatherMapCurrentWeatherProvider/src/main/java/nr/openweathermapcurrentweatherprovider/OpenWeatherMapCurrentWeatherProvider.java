@@ -1,7 +1,8 @@
-package nr.weatherinfoprovider;
+package nr.openweathermapcurrentweatherprovider;
 
 import com.google.common.io.ByteStreams;
 import nr.currentweather.CurrentWeather;
+import nr.currentweatherprovider.CurrentWeatherProvider;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,8 +15,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class CurrentWeatherProvider {
+public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvider {
 
+    public OpenWeatherMapCurrentWeatherProvider(){}
+
+    @Override
     public CurrentWeather getCurrentWeather(String cityId){
 
         return assembleCurrentWeather(getContent(cityId));
@@ -65,7 +69,6 @@ public class CurrentWeatherProvider {
             currentWeather.setTemp((String.valueOf(main.get("temp"))).split("\\.")[0]);
             currentWeather.setHighTemp(String.valueOf(main.get("temp_max")));
             currentWeather.setLowTemp(String.valueOf(main.get("temp_min")));
-            currentWeather.setHumidity(String.valueOf(main.get("humidity")));
 
             JSONObject wind = (JSONObject) jsonObject.get("wind");
             currentWeather.setWindDirection(getWindDirection((Number) wind.get("deg")));

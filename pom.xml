@@ -14,13 +14,14 @@
     </properties>
 
     <modules>
-        <module>WeatherInfoProvider</module>
         <module>Executable</module>
         <module>CalendarProvider</module>
         <module>CommuteProvider</module>
         <module>CurrentWeather</module>
         <module>GUI</module>
         <module>BackgroundImageProvider</module>
+        <module>CurrentWeatherProvider</module>
+        <module>OpenWeatherMapCurrentWeatherProvider</module>
     </modules>
 
     <dependencies>

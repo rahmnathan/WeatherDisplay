@@ -3,7 +3,7 @@ package nr.gui;
 import nr.backgroundimageprovider.BackgroundImageProvider;
 import nr.commuteprovider.CommuteProvider;
 import nr.currentweather.CurrentWeather;
-import nr.weatherinfoprovider.CurrentWeatherProvider;
+import nr.currentweatherprovider.CurrentWeatherProvider;
 import org.apache.commons.lang3.text.WordUtils;
 
 import javax.swing.*;
@@ -11,10 +11,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
+import java.util.Iterator;
+import java.util.ServiceLoader;
 
 public class GUI {
 
-    private CurrentWeatherProvider currentWeatherProvider = new CurrentWeatherProvider();
+    private CurrentWeatherProvider currentWeatherProvider;
     private BackgroundImageProvider backgroundImageProvider = new BackgroundImageProvider();
     private CommuteProvider commuteProvider = new CommuteProvider();
 
@@ -241,5 +243,12 @@ public class GUI {
     }
 
     private void initializeDataProviders(){
+        ServiceLoader<CurrentWeatherProvider> currentWeatherProviders = ServiceLoader.load(CurrentWeatherProvider.class);
+        Iterator<CurrentWeatherProvider> currentWeatherProviderIterator = currentWeatherProviders.iterator();
+        if(!currentWeatherProviderIterator.hasNext()){
+            System.out.println("No current weather providers available");
+            System.exit(1);
+        }
+        currentWeatherProvider = currentWeatherProviderIterator.next();
     }
 }

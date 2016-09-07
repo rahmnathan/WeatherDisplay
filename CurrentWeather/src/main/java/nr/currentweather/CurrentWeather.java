@@ -6,7 +6,6 @@ public class CurrentWeather {
     private String temp;
     private String highTemp;
     private String lowTemp;
-    private String humidity;
     private String windSpeed;
     private String windDirection;
     private byte[] icon;
@@ -49,14 +48,6 @@ public class CurrentWeather {
 
     public void setLowTemp(String lowTemp) {
         this.lowTemp = lowTemp;
-    }
-
-    public String getHumidity() {
-        return humidity;
-    }
-
-    public void setHumidity(String humidity) {
-        this.humidity = humidity;
     }
 
     public String getWindSpeed() {
