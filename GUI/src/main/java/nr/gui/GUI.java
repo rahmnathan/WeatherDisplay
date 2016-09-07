@@ -17,8 +17,8 @@ import java.util.ServiceLoader;
 public class GUI {
 
     private CurrentWeatherProvider currentWeatherProvider;
-    private BackgroundImageProvider backgroundImageProvider = new BackgroundImageProvider();
-    private CommuteProvider commuteProvider = new CommuteProvider();
+    private BackgroundImageProvider backgroundImageProvider;
+    private CommuteProvider commuteProvider;
 
     private String commuteStartLocation = "44.94638,-93.328981";
     private String commuteEndLocation = "44.807234,-93.355154";
@@ -250,5 +250,21 @@ public class GUI {
             System.exit(1);
         }
         currentWeatherProvider = currentWeatherProviderIterator.next();
+
+        ServiceLoader<BackgroundImageProvider> backgroundImageProviders = ServiceLoader.load(BackgroundImageProvider.class);
+        Iterator<BackgroundImageProvider> backgroundImageProviderIterator = backgroundImageProviders.iterator();
+        if(!backgroundImageProviderIterator.hasNext()){
+            System.out.println("No background image provider available");
+            System.exit(1);
+        }
+        backgroundImageProvider = backgroundImageProviderIterator.next();
+
+        ServiceLoader<CommuteProvider> commuteProviders = ServiceLoader.load(CommuteProvider.class);
+        Iterator<CommuteProvider> commuteProviderIterator = commuteProviders.iterator();
+        if(!commuteProviderIterator.hasNext()){
+            System.out.println("No commute provider available");
+            System.exit(1);
+        }
+        commuteProvider = commuteProviderIterator.next();
     }
 }

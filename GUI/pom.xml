@@ -28,7 +28,12 @@
         </dependency>
         <dependency>
             <groupId>nr.weatherdisplay</groupId>
-            <artifactId>DriveTimeProvider</artifactId>
+            <artifactId>BingBackgroundImageProvider</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>nr.weatherdisplay</groupId>
+            <artifactId>CommuteProvider</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -38,10 +43,13 @@
         </dependency>
         <dependency>
             <groupId>nr.weatherdisplay</groupId>
+            <artifactId>GoogleCommuteProvider</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>nr.weatherdisplay</groupId>
             <artifactId>OpenWeatherMapCurrentWeatherProvider</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
-
 </project>

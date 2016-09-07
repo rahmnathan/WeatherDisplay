@@ -23,13 +23,17 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="BackgroundImageProvider" />
-        <module name="CalendarProvider" />
+        <module name="BackgroundImageProviderAPI" />
+        <module name="BingBackgroundImageProvider" />
         <module name="CommuteProvider" />
+        <module name="CommuteProviderAPI" />
         <module name="CurrentWeather" />
         <module name="CurrentWeatherProvider" />
+        <module name="CurrentWeatherProviderAPI" />
         <module name="DriveTime" />
         <module name="DriveTimeProvider" />
         <module name="Executable" />
+        <module name="GoogleCommuteProvider" />
         <module name="GUI" />
         <module name="OpenWeatherMapCurrentWeatherProvider" />
         <module name="RestServer" />
@@ -38,16 +42,21 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="BackgroundImageProvider" target="1.8" />
+      <module name="BackgroundImageProviderAPI" target="1.8" />
+      <module name="BingBackgroundImageProvider" target="1.8" />
       <module name="CalendarProvider" target="1.8" />
       <module name="Commute" target="1.8" />
       <module name="CommuteProvider" target="1.8" />
+      <module name="CommuteProviderAPI" target="1.8" />
       <module name="CurrentWeather" target="1.8" />
       <module name="CurrentWeatherProvider" target="1.8" />
+      <module name="CurrentWeatherProviderAPI" target="1.8" />
       <module name="DataUpdater" target="1.8" />
       <module name="DriveTime" target="1.8" />
       <module name="DriveTimeProvider" target="1.8" />
       <module name="Executable" target="1.8" />
       <module name="Executor" target="1.8" />
+      <module name="GoogleCommuteProvider" target="1.8" />
       <module name="GUI" target="1.8" />
       <module name="OpenWeatherMapCurrentWeatherProvider" target="1.8" />
       <module name="RestServer" target="1.8" />
