@@ -14,6 +14,15 @@ import java.time.LocalDateTime;
 
 public class GUI {
 
+    private CurrentWeatherProvider currentWeatherProvider = new CurrentWeatherProvider();
+    private BackgroundImageProvider backgroundImageProvider = new BackgroundImageProvider();
+    private CommuteProvider commuteProvider = new CommuteProvider();
+
+    private String commuteStartLocation = "44.94638,-93.328981";
+    private String commuteEndLocation = "44.807234,-93.355154";
+    private String currentWeatherCityId = "5045021";
+
+
     private static JFrame frame = new JFrame("Weather Display");
     private static JPanel panel = new JPanel();
     private static Color white = new Color(0xFFFFFF);
@@ -36,12 +45,13 @@ public class GUI {
 
     public GUI(){}
 
-    public void startGUI(byte[] backgroundImage){
+    public void startGUI(){
 
         frame.setUndecorated(true);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        byte[] backgroundImage = backgroundImageProvider.getBackgroundImage();
         backgroundPane = new BackgroundPane(backgroundImage);
         backgroundPane.setLayout(new GridLayout());
 
@@ -178,8 +188,8 @@ public class GUI {
         frame.repaint();
     }
 
-    private void updateCurrentWeather(){
-        CurrentWeather currentWeather = new CurrentWeatherProvider().getCurrentWeather();
+    public void updateCurrentWeather(){
+        CurrentWeather currentWeather = currentWeatherProvider.getCurrentWeather(currentWeatherCityId);
         currentTemp.setText(currentWeather.getTemp() + "°F");
         windDirection.setText(currentWeather.getWindDirection());
         panel.remove(currentWeatherIcon);
@@ -194,7 +204,7 @@ public class GUI {
     }
 
     private void updateBackgroundImage(){
-        byte[] backgroundImage = new BackgroundImageProvider().getBackgroundImage();
+        byte[] backgroundImage = backgroundImageProvider.getBackgroundImage();
 
         frame.remove(backgroundPane);
         backgroundPane = new BackgroundPane(backgroundImage);
@@ -204,8 +214,8 @@ public class GUI {
         frame.repaint();
     }
 
-    private void updateCommute(){
-        String commute = new CommuteProvider().getCommute();
+    public void updateCommute(){
+        String commute = commuteProvider.getCommute(commuteStartLocation, commuteEndLocation);
         Integer commuteInteger = Integer.valueOf(commute.substring(0, commute.length()-5));
         commuteTime.setText(commute);
         if(commuteInteger < 23){
@@ -216,5 +226,15 @@ public class GUI {
             commuteTime.setForeground(new Color(0xDD0003));
         }
         frame.repaint();
+    }
+
+    public void setCommuteStartLocation(String startLocation){
+        this.commuteStartLocation = startLocation;
+    }
+    public void setCommuteEndLocation(String endLocation){
+        this.commuteEndLocation = endLocation;
+    }
+    public void setCurrentWeatherCityId(String currentWeatherCityId){
+        this.currentWeatherCityId = currentWeatherCityId;
     }
 }

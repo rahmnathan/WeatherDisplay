@@ -10,15 +10,16 @@ import java.net.URL;
 
 public class CommuteProvider {
 
-    String uri = "https://maps.googleapis.com/maps/api/directions/json?origin=44.94638,-93.328981&destination=44.807234,-93.355154&key=AIzaSyCJNMBAobikR_slei0YiXZdqCgdvoFHO_Q";
+    public String getCommute(String startLocation, String endLocation){
 
-    public String getCommute(){
-
-        return getTime(getCommuteContent());
+        return getTime(getCommuteContent(startLocation, endLocation));
     }
 
-    private JSONObject getCommuteContent(){
+    private JSONObject getCommuteContent(String startLocation, String endLocation){
         try {
+            String uri = "https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation +
+                    "&destination=" + endLocation + "&key=AIzaSyCJNMBAobikR_slei0YiXZdqCgdvoFHO_Q";
+
             URL url = new URL(uri);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));

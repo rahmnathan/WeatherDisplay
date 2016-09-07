@@ -16,19 +16,19 @@ import java.net.URL;
 
 public class CurrentWeatherProvider {
 
-    String uri = "http://api.openweathermap.org/data/2.5/weather?id=5045021&units=imperial&appid=eec5d76a469ca1a3b7feb0331b7543f9";
+    public CurrentWeather getCurrentWeather(String cityId){
 
-    public CurrentWeather getCurrentWeather(){
-
-        return assembleCurrentWeather(getContent());
+        return assembleCurrentWeather(getContent(cityId));
     }
 
-    private JSONObject getContent(){
+    private JSONObject getContent(String cityId){
         URL url = null;
         String content = "";
 
         try {
-            url = new URL(uri);
+            url = new URL("http://api.openweathermap.org/data/2.5/weather?id=" + cityId +
+                    "&units=imperial&appid=eec5d76a469ca1a3b7feb0331b7543f9");
+
         } catch (MalformedURLException e){
             e.printStackTrace();
         }

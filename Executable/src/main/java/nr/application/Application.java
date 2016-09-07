@@ -1,6 +1,5 @@
 package nr.application;
 
-import nr.backgroundimageprovider.BackgroundImageProvider;
 import nr.gui.GUI;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,13 +7,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
+    public static GUI gui;
+
     public static void main(String[] args) {
 
-        byte[] backgroundImage = new BackgroundImageProvider().getBackgroundImage();
+        gui = new GUI();
 
-        GUI display = new GUI();
-
-        display.startGUI(backgroundImage);
+        gui.startGUI();
 
         SpringApplication.run(Application.class, args);
     }
