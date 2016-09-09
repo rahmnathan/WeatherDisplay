@@ -2,15 +2,10 @@ package nr.gui;
 
 import nr.backgroundimageprovider.BackgroundImageProvider;
 import nr.commuteprovider.CommuteProvider;
-import nr.currentweather.CurrentWeather;
 import nr.currentweatherprovider.CurrentWeatherProvider;
-import org.apache.commons.lang3.text.WordUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.time.LocalDateTime;
-import java.util.Iterator;
-import java.util.ServiceLoader;
 
 public class GUI {
 
@@ -18,7 +13,7 @@ public class GUI {
     static BackgroundImageProvider backgroundImageProvider;
     static CommuteProvider commuteProvider;
 
-    private ServiceProvider serviceProvider = new ServiceProvider();
+    private final ServiceProvider serviceProvider = new ServiceProvider();
 
     static String commuteStartLocation = "44.94638,-93.328981";
     static String commuteEndLocation = "44.807234,-93.355154";

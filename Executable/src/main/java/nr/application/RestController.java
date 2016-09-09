@@ -7,21 +7,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 @org.springframework.web.bind.annotation.RestController
 class RestController {
 
-    GUIUpdater guiUpdater = new GUIUpdater();
-
     @RequestMapping("/commute")
     public void commuteConfig(@RequestParam(value = "start") String startLocation,
                               @RequestParam(value = "end") String endLocation){
 
         Application.gui.setCommuteStartLocation(startLocation);
         Application.gui.setCommuteEndLocation(endLocation);
-        guiUpdater.updateCommute();
+        GUIUpdater.updateCommute();
     }
 
     @RequestMapping("/weather")
     public void weatherConfig(@RequestParam(value = "cityid") String cityId){
 
         Application.gui.setCurrentWeatherCityId(cityId);
-        guiUpdater.updateCurrentWeather();
+        GUIUpdater.updateCurrentWeather();
     }
 }

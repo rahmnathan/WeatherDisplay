@@ -9,7 +9,7 @@ class BackgroundPane extends JPanel {
 
     private final byte[] backgroundImage;
 
-    public BackgroundPane(byte[] image){
+    BackgroundPane(byte[] image){
         this.backgroundImage = image;
     }
 

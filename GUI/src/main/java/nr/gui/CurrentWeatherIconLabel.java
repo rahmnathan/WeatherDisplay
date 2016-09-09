@@ -9,7 +9,7 @@ class CurrentWeatherIconLabel extends JLabel {
 
     private final byte[] image;
 
-    public CurrentWeatherIconLabel(byte[] image){
+    CurrentWeatherIconLabel(byte[] image){
         this.image = image;
     }
 
