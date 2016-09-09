@@ -18,6 +18,9 @@ public class GUI {
     static BackgroundImageProvider backgroundImageProvider;
     static CommuteProvider commuteProvider;
 
+    GUIUpdater guiUpdater = new GUIUpdater();
+    ServiceProvider serviceProvider = new ServiceProvider();
+
     static String commuteStartLocation = "44.94638,-93.328981";
     static String commuteEndLocation = "44.807234,-93.355154";
     static String currentWeatherCityId = "5045021";
@@ -47,7 +50,7 @@ public class GUI {
 
     public void startGUI(){
 
-        initializeDataProviders();
+        serviceProvider.initializeDataProviders();
 
         frame.setUndecorated(true);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -112,7 +115,7 @@ public class GUI {
         currentDate.setLocation(dateTimeHorizontal + 50, dateTimeVertical + 130);
         currentDate.setFont(new Font("Serif", Font.BOLD, 50));
         currentDate.setForeground(white);
-        updateDateTime();
+        guiUpdater.updateDateTime();
         panel.add(currentDate);
 
         commuteTime = new JLabel("Commute Time", SwingConstants.CENTER);
@@ -120,7 +123,7 @@ public class GUI {
         commuteTime.setLocation(540, 90);
         commuteTime.setFont(new Font("Serif", Font.BOLD, 50));
         commuteTime.setForeground(white);
-        updateCommute();
+        guiUpdater.updateCommute();
         panel.add(commuteTime);
 
         JLabel nathansCommute = new JLabel("Nathan's Commute", SwingConstants.CENTER);
@@ -130,84 +133,25 @@ public class GUI {
         nathansCommute.setForeground(white);
         panel.add(nathansCommute);
 
-        updateCurrentWeather();
+        guiUpdater.updateCurrentWeather();
         backgroundPane.add(panel);
 
         frame.add(backgroundPane);
         frame.pack();
         frame.setVisible(true);
 
-        Timer timeUpdater = new Timer(10000, e -> updateDateTime());
+        Timer timeUpdater = new Timer(10000, e -> guiUpdater.updateDateTime());
 
-        Timer currentWeatherUpdater = new Timer(1000000, e -> updateCurrentWeather());
+        Timer currentWeatherUpdater = new Timer(1000000, e -> guiUpdater.updateCurrentWeather());
 
-        Timer backgroundImageUpdater = new Timer(10000000, e -> updateBackgroundImage());
+        Timer backgroundImageUpdater = new Timer(10000000, e -> guiUpdater.updateBackgroundImage());
 
-        Timer commuteUpdater = new Timer(100000, e -> updateCommute());
+        Timer commuteUpdater = new Timer(100000, e -> guiUpdater.updateCommute());
 
         backgroundImageUpdater.start();
         currentWeatherUpdater.start();
         commuteUpdater.start();
         timeUpdater.start();
-    }
-
-    private void updateDateTime(){
-
-        String[] dateTime = LocalDateTime.now().toString().split("T");
-        String[] timeStampArray = dateTime[1].split(":");
-        Integer hour = Integer.valueOf(timeStampArray[0]);
-        if(hour > 12) {
-            hour -= 12;
-        }
-        String hourString = String.valueOf(hour);
-        String timeStamp = hourString + ":" + timeStampArray[1];
-        String[] dateArray = dateTime[0].split("-");
-        String date = dateArray[1] + "-" + dateArray[2] + "-" + dateArray[0];
-
-        currentDate.setText(date);
-
-        currentTime.setText(timeStamp);
-        frame.repaint();
-    }
-
-    public void updateCurrentWeather(){
-        CurrentWeather currentWeather = currentWeatherProvider.getCurrentWeather(currentWeatherCityId);
-        currentTemp.setText(currentWeather.getTemp() + "°F");
-        windDirection.setText(currentWeather.getWindDirection());
-        panel.remove(currentWeatherIcon);
-        currentWeatherIcon = new CurrentWeatherIconLabel(currentWeather.getIcon());
-        currentWeatherIcon.setLocation(10,10);
-        currentWeatherIcon.setSize(250,250);
-        panel.add(currentWeatherIcon);
-        highLowTemps.setText(currentWeather.getLowTemp().split("\\.")[0] + "°F/" + currentWeather.getHighTemp().split("\\.")[0] + "°F");
-        windSpeed.setText(currentWeather.getWindSpeed().split("\\.")[0] + " Mph");
-        weatherDescription.setText("<html><center>" + WordUtils.capitalize(currentWeather.getSky()) + "</center></html>");
-        frame.repaint();
-    }
-
-    private void updateBackgroundImage(){
-        byte[] backgroundImage = backgroundImageProvider.getBackgroundImage();
-
-        frame.remove(backgroundPane);
-        backgroundPane = new BackgroundPane(backgroundImage);
-        backgroundPane.setLayout(new GridLayout());
-        backgroundPane.add(panel);
-        frame.add(backgroundPane);
-        frame.repaint();
-    }
-
-    public void updateCommute(){
-        String commute = commuteProvider.getCommuteTime(commuteStartLocation, commuteEndLocation);
-        Integer commuteInteger = Integer.valueOf(commute.substring(0, commute.length()-5));
-        commuteTime.setText(commute);
-        if(commuteInteger < 23){
-            commuteTime.setForeground(new Color(0x00DD00));
-        } else if (commuteInteger < 30){
-            commuteTime.setForeground(new Color(0xC98311));
-        } else {
-            commuteTime.setForeground(new Color(0xDD0003));
-        }
-        frame.repaint();
     }
 
     public void setCommuteStartLocation(String startLocation){
@@ -219,30 +163,13 @@ public class GUI {
     public void setCurrentWeatherCityId(String currentWeatherCityId){
         this.currentWeatherCityId = currentWeatherCityId;
     }
-
-    private void initializeDataProviders(){
-        ServiceLoader<CurrentWeatherProvider> currentWeatherProviders = ServiceLoader.load(CurrentWeatherProvider.class);
-        Iterator<CurrentWeatherProvider> currentWeatherProviderIterator = currentWeatherProviders.iterator();
-        if(!currentWeatherProviderIterator.hasNext()){
-            System.out.println("No current weather providers available");
-            System.exit(1);
-        }
-        currentWeatherProvider = currentWeatherProviderIterator.next();
-
-        ServiceLoader<BackgroundImageProvider> backgroundImageProviders = ServiceLoader.load(BackgroundImageProvider.class);
-        Iterator<BackgroundImageProvider> backgroundImageProviderIterator = backgroundImageProviders.iterator();
-        if(!backgroundImageProviderIterator.hasNext()){
-            System.out.println("No background image provider available");
-            System.exit(1);
-        }
-        backgroundImageProvider = backgroundImageProviderIterator.next();
-
-        ServiceLoader<CommuteProvider> commuteProviders = ServiceLoader.load(CommuteProvider.class);
-        Iterator<CommuteProvider> commuteProviderIterator = commuteProviders.iterator();
-        if(!commuteProviderIterator.hasNext()){
-            System.out.println("No commute provider available");
-            System.exit(1);
-        }
-        commuteProvider = commuteProviderIterator.next();
+    public String getCommuteStartLocation(){
+        return commuteStartLocation;
+    }
+    public String getCommuteEndLocation(){
+        return commuteEndLocation;
+    }
+    public String getCurrentWeatherCityId(){
+        return currentWeatherCityId;
     }
 }
