@@ -3,11 +3,17 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BackgroundImageProviderAPI/BackgroundImageProvider.iml" filepath="$PROJECT_DIR$/BackgroundImageProviderAPI/BackgroundImageProvider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BackgroundImageProviderAPI/BackgroundImageProvider.iml" filepath="$PROJECT_DIR$/BackgroundImageProviderAPI/BackgroundImageProvider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BingBackgroundImageProvider/BingBackgroundImageProvider.iml" filepath="$PROJECT_DIR$/BingBackgroundImageProvider/BingBackgroundImageProvider.iml" />
       <module fileurl="file://$PROJECT_DIR$/BingBackgroundImageProvider/BingBackgroundImageProvider.iml" filepath="$PROJECT_DIR$/BingBackgroundImageProvider/BingBackgroundImageProvider.iml" />
       <module fileurl="file://$PROJECT_DIR$/CommuteProviderAPI/CommuteProvider.iml" filepath="$PROJECT_DIR$/CommuteProviderAPI/CommuteProvider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CommuteProviderAPI/CommuteProvider.iml" filepath="$PROJECT_DIR$/CommuteProviderAPI/CommuteProvider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CurrentWeatherProviderAPI/CurrentWeatherProvider.iml" filepath="$PROJECT_DIR$/CurrentWeatherProviderAPI/CurrentWeatherProvider.iml" />
       <module fileurl="file://$PROJECT_DIR$/CurrentWeatherProviderAPI/CurrentWeatherProvider.iml" filepath="$PROJECT_DIR$/CurrentWeatherProviderAPI/CurrentWeatherProvider.iml" />
       <module fileurl="file://$PROJECT_DIR$/Executable/Executable.iml" filepath="$PROJECT_DIR$/Executable/Executable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Executable/Executable.iml" filepath="$PROJECT_DIR$/Executable/Executable.iml" />
       <module fileurl="file://$PROJECT_DIR$/GUI/GUI.iml" filepath="$PROJECT_DIR$/GUI/GUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GoogleCommuteProvider/GoogleCommuteProvider.iml" filepath="$PROJECT_DIR$/GoogleCommuteProvider/GoogleCommuteProvider.iml" />
       <module fileurl="file://$PROJECT_DIR$/GoogleCommuteProvider/GoogleCommuteProvider.iml" filepath="$PROJECT_DIR$/GoogleCommuteProvider/GoogleCommuteProvider.iml" />
       <module fileurl="file://$PROJECT_DIR$/OpenWeatherMapCurrentWeatherProvider/OpenWeatherMapCurrentWeatherProvider.iml" filepath="$PROJECT_DIR$/OpenWeatherMapCurrentWeatherProvider/OpenWeatherMapCurrentWeatherProvider.iml" />
       <module fileurl="file://$PROJECT_DIR$/WeatherDisplay.iml" filepath="$PROJECT_DIR$/WeatherDisplay.iml" />
