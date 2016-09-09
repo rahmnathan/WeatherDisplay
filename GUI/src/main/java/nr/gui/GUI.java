@@ -14,34 +14,34 @@ import java.util.ServiceLoader;
 
 public class GUI {
 
-    private CurrentWeatherProvider currentWeatherProvider;
-    private BackgroundImageProvider backgroundImageProvider;
-    private CommuteProvider commuteProvider;
+    static CurrentWeatherProvider currentWeatherProvider;
+    static BackgroundImageProvider backgroundImageProvider;
+    static CommuteProvider commuteProvider;
 
-    private String commuteStartLocation = "44.94638,-93.328981";
-    private String commuteEndLocation = "44.807234,-93.355154";
-    private String currentWeatherCityId = "5045021";
+    static String commuteStartLocation = "44.94638,-93.328981";
+    static String commuteEndLocation = "44.807234,-93.355154";
+    static String currentWeatherCityId = "5045021";
 
 
-    private static final JFrame frame = new JFrame("Weather Display");
-    private static final JPanel panel = new JPanel();
-    private static final Color white = new Color(0xFFFFFF);
+    static final JFrame frame = new JFrame("Weather Display");
+    static final JPanel panel = new JPanel();
+    static final Color white = new Color(0xFFFFFF);
 
     private static final int dateTimeHorizontal = 1400;
     private static final int dateTimeVertical = 20;
     private static final int currentWeatherHorizontal = 245;
     private static final int currentWeatherVertical = 20;
 
-    private JPanel backgroundPane;
-    private JLabel currentWeatherIcon;
-    private JLabel currentTemp;
-    private JLabel highLowTemps;
-    private JLabel windSpeed;
-    private JLabel windDirection;
-    private JLabel currentTime;
-    private JLabel weatherDescription;
-    private JLabel currentDate;
-    private JLabel commuteTime;
+    static JPanel backgroundPane;
+    static JLabel currentWeatherIcon;
+    static JLabel currentTemp;
+    static JLabel highLowTemps;
+    static JLabel windSpeed;
+    static JLabel windDirection;
+    static JLabel currentTime;
+    static JLabel weatherDescription;
+    static JLabel currentDate;
+    static JLabel commuteTime;
 
     public GUI(){}
 
