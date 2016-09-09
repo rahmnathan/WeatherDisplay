@@ -11,6 +11,10 @@
 
     <artifactId>Executable</artifactId>
 
+    <properties>
+        <exec.mainClass>nr.application.Application</exec.mainClass>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
