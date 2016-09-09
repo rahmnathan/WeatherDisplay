@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 public class GUIUpdater {
 
-    void updateDateTime(){
+    static void updateDateTime(){
 
         String[] dateTime = LocalDateTime.now().toString().split("T");
         String[] timeStampArray = dateTime[1].split(":");
@@ -42,7 +42,7 @@ public class GUIUpdater {
         GUI.frame.repaint();
     }
 
-    void updateBackgroundImage(){
+    static void updateBackgroundImage(){
         byte[] backgroundImage = GUI.backgroundImageProvider.getBackgroundImage();
 
         GUI.frame.remove(GUI.backgroundPane);

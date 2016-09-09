@@ -18,8 +18,7 @@ public class GUI {
     static BackgroundImageProvider backgroundImageProvider;
     static CommuteProvider commuteProvider;
 
-    GUIUpdater guiUpdater = new GUIUpdater();
-    ServiceProvider serviceProvider = new ServiceProvider();
+    private ServiceProvider serviceProvider = new ServiceProvider();
 
     static String commuteStartLocation = "44.94638,-93.328981";
     static String commuteEndLocation = "44.807234,-93.355154";
@@ -28,7 +27,7 @@ public class GUI {
 
     static final JFrame frame = new JFrame("Weather Display");
     static final JPanel panel = new JPanel();
-    static final Color white = new Color(0xFFFFFF);
+    private static final Color white = new Color(0xFFFFFF);
 
     private static final int dateTimeHorizontal = 1400;
     private static final int dateTimeVertical = 20;
@@ -115,7 +114,7 @@ public class GUI {
         currentDate.setLocation(dateTimeHorizontal + 50, dateTimeVertical + 130);
         currentDate.setFont(new Font("Serif", Font.BOLD, 50));
         currentDate.setForeground(white);
-        guiUpdater.updateDateTime();
+        GUIUpdater.updateDateTime();
         panel.add(currentDate);
 
         commuteTime = new JLabel("Commute Time", SwingConstants.CENTER);
@@ -123,7 +122,7 @@ public class GUI {
         commuteTime.setLocation(540, 90);
         commuteTime.setFont(new Font("Serif", Font.BOLD, 50));
         commuteTime.setForeground(white);
-        guiUpdater.updateCommute();
+        GUIUpdater.updateCommute();
         panel.add(commuteTime);
 
         JLabel nathansCommute = new JLabel("Nathan's Commute", SwingConstants.CENTER);
@@ -133,20 +132,20 @@ public class GUI {
         nathansCommute.setForeground(white);
         panel.add(nathansCommute);
 
-        guiUpdater.updateCurrentWeather();
+        GUIUpdater.updateCurrentWeather();
         backgroundPane.add(panel);
 
         frame.add(backgroundPane);
         frame.pack();
         frame.setVisible(true);
 
-        Timer timeUpdater = new Timer(10000, e -> guiUpdater.updateDateTime());
+        Timer timeUpdater = new Timer(10000, e -> GUIUpdater.updateDateTime());
 
-        Timer currentWeatherUpdater = new Timer(1000000, e -> guiUpdater.updateCurrentWeather());
+        Timer currentWeatherUpdater = new Timer(1000000, e -> GUIUpdater.updateCurrentWeather());
 
-        Timer backgroundImageUpdater = new Timer(10000000, e -> guiUpdater.updateBackgroundImage());
+        Timer backgroundImageUpdater = new Timer(10000000, e -> GUIUpdater.updateBackgroundImage());
 
-        Timer commuteUpdater = new Timer(100000, e -> guiUpdater.updateCommute());
+        Timer commuteUpdater = new Timer(100000, e -> GUIUpdater.updateCommute());
 
         backgroundImageUpdater.start();
         currentWeatherUpdater.start();
@@ -155,21 +154,12 @@ public class GUI {
     }
 
     public void setCommuteStartLocation(String startLocation){
-        this.commuteStartLocation = startLocation;
+        commuteStartLocation = startLocation;
     }
     public void setCommuteEndLocation(String endLocation){
-        this.commuteEndLocation = endLocation;
+        commuteEndLocation = endLocation;
     }
-    public void setCurrentWeatherCityId(String currentWeatherCityId){
-        this.currentWeatherCityId = currentWeatherCityId;
-    }
-    public String getCommuteStartLocation(){
-        return commuteStartLocation;
-    }
-    public String getCommuteEndLocation(){
-        return commuteEndLocation;
-    }
-    public String getCurrentWeatherCityId(){
-        return currentWeatherCityId;
+    public void setCurrentWeatherCityId(String CityId) {
+        currentWeatherCityId = CityId;
     }
 }
