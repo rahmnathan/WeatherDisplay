@@ -1,2 +1,2 @@
 This project is a display showing weather in your current location, the current time, and the current commute time to from/to
-any given destination. The background image is provided by bing. I'll be adding more details in the future.
+any given destination. I currently have it running on a 16" screen. I'm not sure how it will scale to others. I plan on adding 7 day forecast, google calendar, and more. Weather is provided by OpenWeatherMap; commute is provided by google; and backgorund image is provided by Bing. I'll be adding more details in the future.
