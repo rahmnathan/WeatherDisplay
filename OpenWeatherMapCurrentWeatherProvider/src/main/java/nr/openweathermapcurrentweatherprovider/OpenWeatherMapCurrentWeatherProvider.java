@@ -25,6 +25,34 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
         return assembleCurrentWeather(getContent(cityId));
     }
 
+    private CurrentWeather assembleCurrentWeather(JSONObject jsonObject){
+        CurrentWeather currentWeather = null;
+
+        try{
+            JSONObject weather = (JSONObject) ((JSONArray) jsonObject.get("weather")).get(0);
+            JSONObject main = (JSONObject) jsonObject.get("main");
+            JSONObject wind = (JSONObject) jsonObject.get("wind");
+
+            CurrentWeather.Builder builder = CurrentWeather.Builder.newInstance();
+
+            builder
+                    .highTemp(String.valueOf(main.get("temp_max")))
+                    .lowTemp(String.valueOf(main.get("temp_min")))
+                    .temp((String.valueOf(main.get("temp"))).split("\\.")[0])
+                    .windDirection(getWindDirection((Number) wind.get("deg")))
+                    .windSpeed(String.valueOf(wind.get("speed")))
+                    .sky((String) weather.get("description"))
+                    .icon(getIcon((String) weather.get("icon")));
+
+            currentWeather = builder.build();
+
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+
+        return currentWeather;
+    }
+
     private JSONObject getContent(String cityId){
         URL url = null;
         String content = "";
@@ -55,30 +83,6 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
         }
 
         return new JSONObject(content);
-    }
-
-    private CurrentWeather assembleCurrentWeather(JSONObject jsonObject){
-        CurrentWeather currentWeather = new CurrentWeather();
-
-        try{
-            JSONObject weather = (JSONObject) ((JSONArray) jsonObject.get("weather")).get(0);
-            currentWeather.setSky((String) weather.get("description"));
-            currentWeather.setIcon(getIcon((String) weather.get("icon")));
-
-            JSONObject main = (JSONObject) jsonObject.get("main");
-            currentWeather.setTemp((String.valueOf(main.get("temp"))).split("\\.")[0]);
-            currentWeather.setHighTemp(String.valueOf(main.get("temp_max")));
-            currentWeather.setLowTemp(String.valueOf(main.get("temp_min")));
-
-            JSONObject wind = (JSONObject) jsonObject.get("wind");
-            currentWeather.setWindDirection(getWindDirection((Number) wind.get("deg")));
-            currentWeather.setWindSpeed(String.valueOf(wind.get("speed")));
-
-        }catch(JSONException e){
-            e.printStackTrace();
-        }
-
-        return currentWeather;
     }
 
     private String getWindDirection(Number degreeInput){

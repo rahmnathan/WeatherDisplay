@@ -1,6 +1,6 @@
 package nr.gui;
 
-import nr.backgroundimageprovider.BackgroundImageProvider;
+import nr.backgroundimageprovider.BackgroundImageProviderInterface;
 import nr.commuteprovider.CommuteProvider;
 import nr.currentweatherprovider.CurrentWeatherProvider;
 
@@ -18,8 +18,8 @@ class ServiceProvider {
         }
         GUI.currentWeatherProvider = currentWeatherProviderIterator.next();
 
-        ServiceLoader<BackgroundImageProvider> backgroundImageProviders = ServiceLoader.load(BackgroundImageProvider.class);
-        Iterator<BackgroundImageProvider> backgroundImageProviderIterator = backgroundImageProviders.iterator();
+        ServiceLoader<BackgroundImageProviderInterface> backgroundImageProviders = ServiceLoader.load(BackgroundImageProviderInterface.class);
+        Iterator<BackgroundImageProviderInterface> backgroundImageProviderIterator = backgroundImageProviders.iterator();
         if(!backgroundImageProviderIterator.hasNext()){
             System.out.println("No background image provider available");
             System.exit(1);

@@ -11,10 +11,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="BackgroundImageProvider" />
+    <orderEntry type="module" module-name="BackgroundImageProviderAPI" />
+    <orderEntry type="module" module-name="BackgroundImageProviderInterface" />
     <orderEntry type="module" module-name="BingBackgroundImageProvider" />
-    <orderEntry type="module" module-name="CommuteProvider" />
-    <orderEntry type="module" module-name="CurrentWeatherProvider" />
+    <orderEntry type="module" module-name="CommuteProviderAPI" />
+    <orderEntry type="module" module-name="CurrentWeatherProviderAPI" />
     <orderEntry type="module" module-name="GoogleCommuteProvider" />
     <orderEntry type="module" module-name="OpenWeatherMapCurrentWeatherProvider" />
     <orderEntry type="library" name="Maven: org.json:json:20160810" level="project" />

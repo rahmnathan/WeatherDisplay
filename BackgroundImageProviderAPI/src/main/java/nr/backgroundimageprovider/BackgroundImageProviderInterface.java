@@ -1,6 +1,6 @@
 package nr.backgroundimageprovider;
 
-public interface BackgroundImageProvider {
+public interface BackgroundImageProviderInterface {
 
     byte[] getBackgroundImage();
 }

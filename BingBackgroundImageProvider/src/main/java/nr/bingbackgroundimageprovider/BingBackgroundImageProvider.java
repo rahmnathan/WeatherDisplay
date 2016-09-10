@@ -1,7 +1,7 @@
 package nr.bingbackgroundimageprovider;
 
 import com.google.common.io.ByteStreams;
-import nr.backgroundimageprovider.BackgroundImageProvider;
+import nr.backgroundimageprovider.BackgroundImageProviderInterface;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class BingBackgroundImageProvider implements BackgroundImageProvider {
+public class BingBackgroundImageProvider implements BackgroundImageProviderInterface {
 
     public BingBackgroundImageProvider(){}
 

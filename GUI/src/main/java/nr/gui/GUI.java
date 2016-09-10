@@ -1,6 +1,6 @@
 package nr.gui;
 
-import nr.backgroundimageprovider.BackgroundImageProvider;
+import nr.backgroundimageprovider.BackgroundImageProviderInterface;
 import nr.commuteprovider.CommuteProvider;
 import nr.currentweatherprovider.CurrentWeatherProvider;
 
@@ -10,7 +10,7 @@ import java.awt.*;
 public class GUI {
 
     static CurrentWeatherProvider currentWeatherProvider;
-    static BackgroundImageProvider backgroundImageProvider;
+    static BackgroundImageProviderInterface backgroundImageProvider;
     static CommuteProvider commuteProvider;
 
     private final ServiceProvider serviceProvider = new ServiceProvider();
