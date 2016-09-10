@@ -1,7 +1,7 @@
 package nr.openweathermapcurrentweatherprovider;
 
 import com.google.common.io.ByteStreams;
-import nr.currentweather.CurrentWeather;
+import nr.currentweatherprovider.CurrentWeather;
 import nr.currentweatherprovider.CurrentWeatherProvider;
 import org.json.JSONArray;
 import org.json.JSONException;
