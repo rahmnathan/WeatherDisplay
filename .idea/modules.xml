@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BackgroundImageProviderAPI/BackgroundImageProvider.iml" filepath="$PROJECT_DIR$/BackgroundImageProviderAPI/BackgroundImageProvider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BackgroundImageProviderAPI/BackgroundImageProviderAPI.iml" filepath="$PROJECT_DIR$/BackgroundImageProviderAPI/BackgroundImageProviderAPI.iml" />
       <module fileurl="file://$PROJECT_DIR$/BackgroundImageProviderAPI/BackgroundImageProviderInterface.iml" filepath="$PROJECT_DIR$/BackgroundImageProviderAPI/BackgroundImageProviderInterface.iml" />
       <module fileurl="file://$PROJECT_DIR$/BingBackgroundImageProvider/BingBackgroundImageProvider.iml" filepath="$PROJECT_DIR$/BingBackgroundImageProvider/BingBackgroundImageProvider.iml" />
       <module fileurl="file://$PROJECT_DIR$/CommuteProviderAPI/CommuteProviderAPI.iml" filepath="$PROJECT_DIR$/CommuteProviderAPI/CommuteProviderAPI.iml" />

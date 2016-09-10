@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BackgroundImageProviderAPI" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/BingBackgroundImageProvider" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommuteProviderAPI" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CurrentWeatherProviderAPI" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Executable" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/GUI" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/GoogleCommuteProvider" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/OpenWeatherMapCurrentWeatherProvider" charset="UTF-8" />
+  </component>
+</project>
