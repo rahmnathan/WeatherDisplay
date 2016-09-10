@@ -11,8 +11,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: nr.weatherdisplay:CurrentWeather:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: nr.weatherdisplay:WeatherInfoProvider:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: nr.weatherdisplay:CurrentWeather:1.0-SNAPSHOT" level="project" />
     <orderEntry type="module" module-name="BackgroundImageProvider" />
     <orderEntry type="module" module-name="BingBackgroundImageProvider" />
     <orderEntry type="module" module-name="CommuteProvider" />

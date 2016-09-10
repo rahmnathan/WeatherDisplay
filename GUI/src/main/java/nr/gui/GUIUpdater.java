@@ -3,6 +3,8 @@ package nr.gui;
 import nr.currentweatherprovider.CurrentWeather;
 import org.apache.commons.lang3.text.WordUtils;
 
+import nr.gui.GUI.*;
+
 import java.awt.*;
 import java.time.LocalDateTime;
 
