@@ -64,14 +64,14 @@ public class GUI {
 
         currentTemp = new JLabel("Current Temp", SwingConstants.CENTER);
         currentTemp.setLocation(currentWeatherHorizontal, currentWeatherVertical);
-        currentTemp.setSize(200,60);
+        currentTemp.setSize(220,60);
         currentTemp.setFont(new Font("Serif", Font.BOLD, 60));
         currentTemp.setForeground(white);
         panel.add(currentTemp);
 
         highLowTemps = new JLabel("High Temp", SwingConstants.CENTER);
         highLowTemps.setLocation(currentWeatherHorizontal + 20, currentWeatherVertical + 70);
-        highLowTemps.setSize(150,30);
+        highLowTemps.setSize(170,30);
         highLowTemps.setFont(new Font("Serif", Font.BOLD, 23));
         highLowTemps.setForeground(white);
         panel.add(highLowTemps);
