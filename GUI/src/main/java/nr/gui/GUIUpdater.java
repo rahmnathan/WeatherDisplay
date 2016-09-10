@@ -1,6 +1,6 @@
 package nr.gui;
 
-import nr.currentweather.CurrentWeather;
+import nr.currentweatherprovider.CurrentWeather;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.awt.*;
