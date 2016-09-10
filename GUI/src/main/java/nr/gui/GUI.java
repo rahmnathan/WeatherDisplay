@@ -26,7 +26,7 @@ public class GUI {
 
     private static final int dateTimeHorizontal = 860;
     private static final int dateTimeVertical = 0;
-    private static final int currentWeatherHorizontal = 190;
+    private static final int currentWeatherHorizontal = 220;
     private static final int currentWeatherVertical = 20;
 
     static JPanel backgroundPane;
@@ -120,12 +120,12 @@ public class GUI {
         GUIUpdater.updateCommute();
         panel.add(commuteTime);
 
-        JLabel nathansCommute = new JLabel("Nathan's Commute", SwingConstants.CENTER);
-        nathansCommute.setSize(350, 100);
-        nathansCommute.setLocation(430, 10);
-        nathansCommute.setFont(new Font("Serif", Font.BOLD, 30));
-        nathansCommute.setForeground(white);
-        panel.add(nathansCommute);
+        JLabel commute = new JLabel("Commute", SwingConstants.CENTER);
+        commute.setSize(175, 100);
+        commute.setLocation(510, 10);
+        commute.setFont(new Font("Serif", Font.BOLD, 30));
+        commute.setForeground(white);
+        panel.add(commute);
 
         GUIUpdater.updateCurrentWeather();
         backgroundPane.add(panel);
