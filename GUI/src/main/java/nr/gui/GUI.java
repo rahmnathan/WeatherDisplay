@@ -24,9 +24,9 @@ public class GUI {
     static final JPanel panel = new JPanel();
     private static final Color white = new Color(0xFFFFFF);
 
-    private static final int dateTimeHorizontal = 1400;
-    private static final int dateTimeVertical = 20;
-    private static final int currentWeatherHorizontal = 245;
+    private static final int dateTimeHorizontal = 860;
+    private static final int dateTimeVertical = 0;
+    private static final int currentWeatherHorizontal = 190;
     private static final int currentWeatherVertical = 20;
 
     static JPanel backgroundPane;
@@ -58,28 +58,28 @@ public class GUI {
         panel.setLayout(null);
 
         currentWeatherIcon = new JLabel();
-        currentWeatherIcon.setLocation(10,10);
-        currentWeatherIcon.setSize(250,250);
+        currentWeatherIcon.setLocation(0,0);
+        currentWeatherIcon.setSize(180,180);
         panel.add(currentWeatherIcon);
 
         currentTemp = new JLabel("Current Temp", SwingConstants.CENTER);
         currentTemp.setLocation(currentWeatherHorizontal, currentWeatherVertical);
         currentTemp.setSize(200,60);
-        currentTemp.setFont(new Font("Serif", Font.BOLD, 70));
+        currentTemp.setFont(new Font("Serif", Font.BOLD, 60));
         currentTemp.setForeground(white);
         panel.add(currentTemp);
 
         highLowTemps = new JLabel("High Temp", SwingConstants.CENTER);
         highLowTemps.setLocation(currentWeatherHorizontal + 20, currentWeatherVertical + 70);
         highLowTemps.setSize(150,30);
-        highLowTemps.setFont(new Font("Serif", Font.BOLD, 20));
+        highLowTemps.setFont(new Font("Serif", Font.BOLD, 23));
         highLowTemps.setForeground(white);
         panel.add(highLowTemps);
 
         windSpeed = new JLabel("Wind Info", SwingConstants.CENTER);
-        windSpeed.setLocation(currentWeatherHorizontal + 15, currentWeatherVertical + 110);
+        windSpeed.setLocation(currentWeatherHorizontal, currentWeatherVertical + 110);
         windSpeed.setSize(200, 50);
-        windSpeed.setFont(new Font("Serif", Font.BOLD, 45));
+        windSpeed.setFont(new Font("Serif", Font.BOLD, 35));
         windSpeed.setForeground(white);
         panel.add(windSpeed);
 
@@ -91,38 +91,38 @@ public class GUI {
         panel.add(windDirection);
 
         weatherDescription = new JLabel("Weather Descripiton", SwingConstants.CENTER);
-        weatherDescription.setSize(450, 170);
-        weatherDescription.setLocation(0, 240);
+        weatherDescription.setSize(400, 170);
+        weatherDescription.setLocation(0, 210);
         weatherDescription.setForeground(white);
-        weatherDescription.setFont(new Font("Serif", Font.BOLD, 50));
+        weatherDescription.setFont(new Font("Serif", Font.BOLD, 40));
         panel.add(weatherDescription);
 
         currentTime = new JLabel("Current Time", SwingConstants.CENTER);
         currentTime.setSize(500, 150);
         currentTime.setLocation(dateTimeHorizontal, dateTimeVertical);
         currentTime.setForeground(white);
-        currentTime.setFont(new Font("Serif", Font.BOLD, 150));
+        currentTime.setFont(new Font("Serif", Font.BOLD, 100));
         panel.add(currentTime);
 
         currentDate = new JLabel("Current Date", SwingConstants.CENTER);
         currentDate.setSize(400, 110);
-        currentDate.setLocation(dateTimeHorizontal + 50, dateTimeVertical + 130);
-        currentDate.setFont(new Font("Serif", Font.BOLD, 50));
+        currentDate.setLocation(dateTimeHorizontal + 50, dateTimeVertical + 100);
+        currentDate.setFont(new Font("Serif", Font.BOLD, 40));
         currentDate.setForeground(white);
         GUIUpdater.updateDateTime();
         panel.add(currentDate);
 
         commuteTime = new JLabel("Commute Time", SwingConstants.CENTER);
         commuteTime.setSize(250, 60);
-        commuteTime.setLocation(540, 90);
-        commuteTime.setFont(new Font("Serif", Font.BOLD, 50));
+        commuteTime.setLocation(470, 90);
+        commuteTime.setFont(new Font("Serif", Font.BOLD, 40));
         commuteTime.setForeground(white);
         GUIUpdater.updateCommute();
         panel.add(commuteTime);
 
         JLabel nathansCommute = new JLabel("Nathan's Commute", SwingConstants.CENTER);
         nathansCommute.setSize(350, 100);
-        nathansCommute.setLocation(500, 10);
+        nathansCommute.setLocation(430, 10);
         nathansCommute.setFont(new Font("Serif", Font.BOLD, 30));
         nathansCommute.setForeground(white);
         panel.add(nathansCommute);
