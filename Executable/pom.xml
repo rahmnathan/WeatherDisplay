@@ -13,6 +13,7 @@
 
     <properties>
         <exec.mainClass>nr.application.Application</exec.mainClass>
+	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <build>
