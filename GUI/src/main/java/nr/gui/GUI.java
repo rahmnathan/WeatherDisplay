@@ -15,9 +15,9 @@ public class GUI {
 
     private final ServiceProvider serviceProvider = new ServiceProvider();
 
-    static String commuteStartLocation = "44.94638,-93.328981";
-    static String commuteEndLocation = "44.807234,-93.355154";
-    static String currentWeatherCityId = "5045021";
+    static String commuteStartLocation = "";
+    static String commuteEndLocation = "";
+    static String currentWeatherCityId = "";
 
 
     static final JFrame frame = new JFrame("Weather Display");

@@ -19,9 +19,12 @@ public class GoogleCommuteProvider implements CommuteProvider {
     }
 
     private JSONObject getCommuteContent(String startLocation, String endLocation){
+
+        String key = "";
+
         try {
             String uri = "https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation +
-                    "&destination=" + endLocation + "&key=AIzaSyCJNMBAobikR_slei0YiXZdqCgdvoFHO_Q";
+                    "&destination=" + endLocation + "&key=" + key;
 
             URL url = new URL(uri);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

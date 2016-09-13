@@ -56,10 +56,11 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
     private JSONObject getContent(String cityId){
         URL url = null;
         String content = "";
+        String key = "";
 
         try {
             url = new URL("http://api.openweathermap.org/data/2.5/weather?id=" + cityId +
-                    "&units=imperial&appid=eec5d76a469ca1a3b7feb0331b7543f9");
+                    "&units=imperial&appid=" + key);
 
         } catch (MalformedURLException e){
             e.printStackTrace();
