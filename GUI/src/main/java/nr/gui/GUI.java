@@ -9,42 +9,47 @@ import java.awt.*;
 
 public class GUI {
 
-    static CurrentWeatherProvider currentWeatherProvider;
-    static BackgroundImageProvider backgroundImageProvider;
-    static CommuteProvider commuteProvider;
+    // Data providers
 
-    private final ServiceProvider serviceProvider = new ServiceProvider();
+    CurrentWeatherProvider currentWeatherProvider;
+    BackgroundImageProvider backgroundImageProvider;
+    CommuteProvider commuteProvider;
 
-    static String commuteStartLocation = "";
-    static String commuteEndLocation = "";
-    static String currentWeatherCityId = "";
+    // Initial location data - can be configured via rest
 
+    String commuteStartLocation = "";
+    String commuteEndLocation = "";
+    String currentWeatherCityId = "";
 
-    static final JFrame frame = new JFrame("Weather Display");
-    static final JPanel panel = new JPanel();
-    private static final Color white = new Color(0xFFFFFF);
+    // Some layout adjusters
 
-    private static final int dateTimeHorizontal = 860;
-    private static final int dateTimeVertical = 0;
-    private static final int currentWeatherHorizontal = 220;
-    private static final int currentWeatherVertical = 20;
+    private final int dateTimeHorizontal = 860;
+    private final int dateTimeVertical = 0;
+    private final int currentWeatherHorizontal = 220;
+    private final int currentWeatherVertical = 20;
 
-    static JPanel backgroundPane;
-    static JLabel currentWeatherIcon;
-    static JLabel currentTemp;
-    static JLabel highLowTemps;
-    static JLabel windSpeed;
-    static JLabel windDirection;
-    static JLabel currentTime;
-    static JLabel weatherDescription;
-    static JLabel currentDate;
-    static JLabel commuteTime;
+    // Components of our GUI
+
+    final JFrame frame = new JFrame("Weather Display");
+    final JPanel panel = new JPanel();
+    private final Color white = new Color(0xFFFFFF);
+
+    JPanel backgroundPane;
+    JLabel currentWeatherIcon;
+    JLabel currentTemp;
+    JLabel highLowTemps;
+    JLabel windSpeed;
+    JLabel windDirection;
+    JLabel currentTime;
+    JLabel weatherDescription;
+    JLabel currentDate;
+    JLabel commuteTime;
 
     public GUI(){}
 
     public void startGUI(){
 
-        serviceProvider.initializeDataProviders();
+        new ServiceProvider().initializeDataProviders(this);
 
         frame.setUndecorated(true);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -109,7 +114,6 @@ public class GUI {
         currentDate.setLocation(dateTimeHorizontal + 50, dateTimeVertical + 100);
         currentDate.setFont(new Font("Serif", Font.BOLD, 40));
         currentDate.setForeground(white);
-        GUIUpdater.updateDateTime();
         panel.add(currentDate);
 
         commuteTime = new JLabel("Commute Time", SwingConstants.CENTER);
@@ -117,7 +121,6 @@ public class GUI {
         commuteTime.setLocation(470, 90);
         commuteTime.setFont(new Font("Serif", Font.BOLD, 40));
         commuteTime.setForeground(white);
-        GUIUpdater.updateCommute();
         panel.add(commuteTime);
 
         JLabel commute = new JLabel("Commute", SwingConstants.CENTER);
@@ -127,25 +130,11 @@ public class GUI {
         commute.setForeground(white);
         panel.add(commute);
 
-        GUIUpdater.updateCurrentWeather();
         backgroundPane.add(panel);
 
         frame.add(backgroundPane);
         frame.pack();
         frame.setVisible(true);
-
-        Timer timeUpdater = new Timer(10000, e -> GUIUpdater.updateDateTime());
-
-        Timer currentWeatherUpdater = new Timer(1000000, e -> GUIUpdater.updateCurrentWeather());
-
-        Timer backgroundImageUpdater = new Timer(10000000, e -> GUIUpdater.updateBackgroundImage());
-
-        Timer commuteUpdater = new Timer(100000, e -> GUIUpdater.updateCommute());
-
-        backgroundImageUpdater.start();
-        currentWeatherUpdater.start();
-        commuteUpdater.start();
-        timeUpdater.start();
     }
 
     public void setCommuteStartLocation(String startLocation){

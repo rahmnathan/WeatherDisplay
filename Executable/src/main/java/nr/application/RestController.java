@@ -10,16 +10,14 @@ class RestController {
     @RequestMapping("/commute")
     public void commuteConfig(@RequestParam(value = "start") String startLocation,
                               @RequestParam(value = "end") String endLocation){
-
-        Application.gui.setCommuteStartLocation(startLocation);
-        Application.gui.setCommuteEndLocation(endLocation);
-        GUIUpdater.updateCommute();
+//
+//        Application.gui.setCommuteStartLocation(startLocation);
+//        Application.gui.setCommuteEndLocation(endLocation);
     }
 
     @RequestMapping("/weather")
     public void weatherConfig(@RequestParam(value = "cityid") String cityId){
 
-        Application.gui.setCurrentWeatherCityId(cityId);
-        GUIUpdater.updateCurrentWeather();
+//        Application.gui.setCurrentWeatherCityId(cityId);
     }
 }

@@ -9,14 +9,14 @@ import java.util.ServiceLoader;
 
 class ServiceProvider {
 
-    void initializeDataProviders(){
+    void initializeDataProviders(GUI gui){
         ServiceLoader<CurrentWeatherProvider> currentWeatherProviders = ServiceLoader.load(CurrentWeatherProvider.class);
         Iterator<CurrentWeatherProvider> currentWeatherProviderIterator = currentWeatherProviders.iterator();
         if(!currentWeatherProviderIterator.hasNext()){
             System.out.println("No current weather providers available");
             System.exit(1);
         }
-        GUI.currentWeatherProvider = currentWeatherProviderIterator.next();
+        gui.currentWeatherProvider = currentWeatherProviderIterator.next();
 
         ServiceLoader<BackgroundImageProvider> backgroundImageProviders = ServiceLoader.load(BackgroundImageProvider.class);
         Iterator<BackgroundImageProvider> backgroundImageProviderIterator = backgroundImageProviders.iterator();
@@ -24,7 +24,7 @@ class ServiceProvider {
             System.out.println("No background image provider available");
             System.exit(1);
         }
-        GUI.backgroundImageProvider = backgroundImageProviderIterator.next();
+        gui.backgroundImageProvider = backgroundImageProviderIterator.next();
 
         ServiceLoader<CommuteProvider> commuteProviders = ServiceLoader.load(CommuteProvider.class);
         Iterator<CommuteProvider> commuteProviderIterator = commuteProviders.iterator();
@@ -32,6 +32,6 @@ class ServiceProvider {
             System.out.println("No commute provider available");
             System.exit(1);
         }
-        GUI.commuteProvider = commuteProviderIterator.next();
+        gui.commuteProvider = commuteProviderIterator.next();
     }
 }
