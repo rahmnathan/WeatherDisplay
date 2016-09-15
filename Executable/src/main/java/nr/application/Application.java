@@ -8,10 +8,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
+    static GUI gui;
+    static GUIUpdater guiUpdater;
+
     public static void main(String[] args) {
 
-        GUI gui = new GUI();
-        GUIUpdater guiUpdater = new GUIUpdater();
+        gui = new GUI();
+        guiUpdater = new GUIUpdater();
 
         guiUpdater.registerObserver(gui);
 

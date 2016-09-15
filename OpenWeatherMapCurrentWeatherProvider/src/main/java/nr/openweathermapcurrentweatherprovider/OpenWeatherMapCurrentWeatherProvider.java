@@ -54,7 +54,7 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
     }
 
     private JSONObject getContent(String cityId){
-        URL url = null;
+        URL url;
         String content = "";
         String key = "";
 
@@ -62,11 +62,6 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
             url = new URL("http://api.openweathermap.org/data/2.5/weather?id=" + cityId +
                     "&units=imperial&appid=" + key);
 
-        } catch (MalformedURLException e){
-            e.printStackTrace();
-        }
-
-        try{
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String reader = br.readLine();

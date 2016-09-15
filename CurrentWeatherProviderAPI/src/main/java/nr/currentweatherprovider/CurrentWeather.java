@@ -2,13 +2,13 @@ package nr.currentweatherprovider;
 
 public class CurrentWeather {
 
-    private String sky;
-    private String temp;
-    private String highTemp;
-    private String lowTemp;
-    private String windSpeed;
-    private String windDirection;
-    private byte[] icon;
+    private final String sky;
+    private final String temp;
+    private final String highTemp;
+    private final String lowTemp;
+    private final String windSpeed;
+    private final String windDirection;
+    private final byte[] icon;
 
     private CurrentWeather(String sky, String temp, String highTemp, String lowTemp, String windSpeed, String windDirection,
                            byte[] icon){

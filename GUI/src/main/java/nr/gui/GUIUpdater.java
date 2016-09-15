@@ -50,7 +50,7 @@ public class GUIUpdater {
         gui.frame.repaint();
     }
 
-    private void updateCurrentWeather(){
+    public void updateCurrentWeather(){
         CurrentWeather currentWeather = gui.currentWeatherProvider.getCurrentWeather(gui.currentWeatherCityId);
         gui.currentTemp.setText(currentWeather.getTemp() + "°F");
         gui.windDirection.setText(currentWeather.getWindDirection());
@@ -76,7 +76,7 @@ public class GUIUpdater {
         gui.frame.repaint();
     }
 
-    private void updateCommute(){
+    public void updateCommute(){
         String commute = gui.commuteProvider.getCommuteTime(gui.commuteStartLocation, gui.commuteEndLocation);
         gui.commuteTime.setText("<html><center>" + commute + "</center><html>");
         gui.frame.repaint();
