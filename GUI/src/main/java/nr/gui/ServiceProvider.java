@@ -4,6 +4,7 @@ import nr.backgroundimageprovider.BackgroundImageProvider;
 import nr.commuteprovider.CommuteProvider;
 import nr.currentweatherprovider.CurrentWeatherProvider;
 
+import javax.naming.Context;
 import java.util.Iterator;
 import java.util.ServiceLoader;
 

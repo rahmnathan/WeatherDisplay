@@ -24,7 +24,6 @@ class BackgroundPane extends JPanel {
         } catch (Exception e){
             e.printStackTrace();
         }
-        if(image != null) {
             for (int x = 0; x < image.getWidth(null); x++) {
                 for (int y = 0; y < image.getHeight(null); y++) {
                     Color pixelColor = new Color(image.getRGB(x, y), true);
@@ -36,7 +35,6 @@ class BackgroundPane extends JPanel {
                     image.setRGB(x, y, rgba);
                 }
             }
-        }
         g.drawImage(image, 0, 0, this);
     }
 }

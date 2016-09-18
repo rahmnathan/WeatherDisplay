@@ -6,6 +6,8 @@ import nr.currentweatherprovider.CurrentWeatherProvider;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -56,7 +58,7 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
     private JSONObject getContent(String cityId){
         URL url;
         String content = "";
-        String key = "";
+        String key = "eec5d76a469ca1a3b7feb0331b7543f9";
 
         try {
             url = new URL("http://api.openweathermap.org/data/2.5/weather?id=" + cityId +

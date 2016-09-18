@@ -17,9 +17,9 @@ public class GUI {
 
     // Initial location data - can be configured via rest
 
-    String commuteStartLocation = "";
-    String commuteEndLocation = "";
-    String currentWeatherCityId = "";
+    String commuteStartLocation = "44.94638,-93.328981";
+    String commuteEndLocation = "44.807234,-93.355154";
+    String currentWeatherCityId = "5045021";
 
     // Some layout adjusters
 

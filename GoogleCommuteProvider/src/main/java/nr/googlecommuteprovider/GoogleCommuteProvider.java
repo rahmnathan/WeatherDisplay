@@ -20,7 +20,7 @@ public class GoogleCommuteProvider implements CommuteProvider {
 
     private JSONObject getCommuteContent(String startLocation, String endLocation){
 
-        String key = "";
+        String key = "AIzaSyCJNMBAobikR_slei0YiXZdqCgdvoFHO_Q";
 
         try {
             String uri = "https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation +
