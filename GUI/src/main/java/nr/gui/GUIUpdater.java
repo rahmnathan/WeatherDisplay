@@ -39,6 +39,9 @@ public class GUIUpdater {
         if(hour > 12) {
             hour -= 12;
         }
+        if(hour == 0){
+            hour += 12;
+        }
         String hourString = String.valueOf(hour);
         String timeStamp = hourString + ":" + timeStampArray[1];
         String[] dateArray = dateTime[0].split("-");
