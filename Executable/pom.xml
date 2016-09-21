@@ -31,5 +31,25 @@
             <artifactId>GUI</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>nr.weatherdisplay</groupId>
+            <artifactId>CurrentWeatherProvider</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>nr.weatherdisplay</groupId>
+            <artifactId>BackgroundImageProviderAPI</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>nr.weatherdisplay</groupId>
+            <artifactId>CommuteProvider</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>nr.weatherdisplay</groupId>
+            <artifactId>BingBackgroundImageProvider</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

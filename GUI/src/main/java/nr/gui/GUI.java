@@ -3,16 +3,27 @@ package nr.gui;
 import nr.backgroundimageprovider.BackgroundImageProvider;
 import nr.commuteprovider.CommuteProvider;
 import nr.currentweatherprovider.CurrentWeatherProvider;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.*;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
 
+@Component
 public class GUI {
 
     // Data providers
 
+    @Autowired
+    @Qualifier("OpenWeather")
     CurrentWeatherProvider currentWeatherProvider;
+    @Autowired
+    @Qualifier("BingBackground")
     BackgroundImageProvider backgroundImageProvider;
+    @Autowired
+    @Qualifier("GoogleCommute")
     CommuteProvider commuteProvider;
 
     // Initial location data - can be configured via rest
@@ -48,8 +59,6 @@ public class GUI {
     public GUI(){}
 
     public void startGUI(){
-
-        new ServiceProvider().initializeDataProviders(this);
 
         frame.setUndecorated(true);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);

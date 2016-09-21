@@ -2,35 +2,20 @@ package nr.gui;
 
 import nr.currentweatherprovider.CurrentWeather;
 import org.apache.commons.lang3.text.WordUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.time.LocalDateTime;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
+@Component
 public class GUIUpdater {
 
+    @Autowired
     private GUI gui;
 
-    public void registerObserver(GUI gui){
-        this.gui = gui;
-    }
-
-    public void startTimedUpdates(){
-
-        Runnable dateTimeUpdater = this::updateDateTime;
-        Runnable currentWeatherUpdater = this::updateCurrentWeather;
-        Runnable backgroundImageUpdater = this::updateBackgroundImage;
-        Runnable commuteUpdater = this::updateCommute;
-
-        ScheduledThreadPoolExecutor scheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(4);
-
-        scheduledThreadPoolExecutor.scheduleWithFixedDelay(dateTimeUpdater, 0, 10, TimeUnit.SECONDS);
-        scheduledThreadPoolExecutor.scheduleWithFixedDelay(currentWeatherUpdater, 0, 5, TimeUnit.MINUTES);
-        scheduledThreadPoolExecutor.scheduleWithFixedDelay(backgroundImageUpdater, 0, 2, TimeUnit.HOURS);
-        scheduledThreadPoolExecutor.scheduleWithFixedDelay(commuteUpdater, 0, 3, TimeUnit.MINUTES);
-    }
-
+    @Scheduled(fixedDelay = 5000)
     private void updateDateTime(){
 
         String[] dateTime = LocalDateTime.now().toString().split("T");
@@ -53,6 +38,7 @@ public class GUIUpdater {
         gui.frame.repaint();
     }
 
+    @Scheduled(fixedDelay = 500000)
     public void updateCurrentWeather(){
         CurrentWeather currentWeather = gui.currentWeatherProvider.getCurrentWeather(gui.currentWeatherCityId);
         gui.currentTemp.setText(currentWeather.getTemp() + "°F");
@@ -68,6 +54,7 @@ public class GUIUpdater {
         gui.frame.repaint();
     }
 
+    @Scheduled(fixedDelay = 5000000)
     private void updateBackgroundImage(){
         byte[] backgroundImage = gui.backgroundImageProvider.getBackgroundImage();
 
@@ -79,6 +66,7 @@ public class GUIUpdater {
         gui.frame.repaint();
     }
 
+    @Scheduled(fixedDelay = 500000)
     public void updateCommute(){
         String commute = gui.commuteProvider.getCommuteTime(gui.commuteStartLocation, gui.commuteEndLocation);
         gui.commuteTime.setText("<html><center>" + commute + "</center><html>");

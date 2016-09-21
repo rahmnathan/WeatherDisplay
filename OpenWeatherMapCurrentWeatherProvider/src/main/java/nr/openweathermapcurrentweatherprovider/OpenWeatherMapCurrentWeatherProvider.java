@@ -17,6 +17,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+@Service("OpenWeather")
 public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvider {
 
     public OpenWeatherMapCurrentWeatherProvider(){}
