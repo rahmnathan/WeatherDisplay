@@ -19,9 +19,11 @@ public class GUI {
     @Autowired
     @Qualifier("OpenWeather")
     CurrentWeatherProvider currentWeatherProvider;
+
     @Autowired
     @Qualifier("BingBackground")
     BackgroundImageProvider backgroundImageProvider;
+
     @Autowired
     @Qualifier("GoogleCommute")
     CommuteProvider commuteProvider;

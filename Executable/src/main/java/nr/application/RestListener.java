@@ -5,9 +5,10 @@ import nr.gui.GUIUpdater;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@org.springframework.web.bind.annotation.RestController
-class RestController {
+@RestController
+class RestListener {
 
     @Autowired
     GUI gui;

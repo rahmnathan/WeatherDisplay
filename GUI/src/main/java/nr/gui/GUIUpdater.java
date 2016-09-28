@@ -67,7 +67,7 @@ public class GUIUpdater {
     }
 
     @Scheduled(fixedDelay = 500000)
-    public void updateCommute(){
+    public void updateCommute() {
         String commute = gui.commuteProvider.getCommuteTime(gui.commuteStartLocation, gui.commuteEndLocation);
         gui.commuteTime.setText("<html><center>" + commute + "</center><html>");
         gui.frame.repaint();
