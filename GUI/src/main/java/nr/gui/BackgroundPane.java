@@ -8,22 +8,24 @@ import java.io.ByteArrayInputStream;
 
 class BackgroundPane extends JPanel {
 
-    private final byte[] backgroundImage;
+    private byte[] backgroundImage;
 
-    BackgroundPane(byte[] image){
-        this.backgroundImage = image;
+    BackgroundPane(){}
+
+    void setBackgroundImage(byte[] backgroundImage) {
+        this.backgroundImage = backgroundImage;
     }
 
     @Override
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
 
-        BufferedImage image = null;
-
-        try {
-            image = ImageIO.read(new ByteArrayInputStream(backgroundImage));
-        } catch (Exception e){
-            e.printStackTrace();
-        }
+        if (backgroundImage != null) {
+            BufferedImage image = null;
+            try {
+                image = ImageIO.read(new ByteArrayInputStream(backgroundImage));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             for (int x = 0; x < image.getWidth(null); x++) {
                 for (int y = 0; y < image.getHeight(null); y++) {
                     Color pixelColor = new Color(image.getRGB(x, y), true);
@@ -35,6 +37,7 @@ class BackgroundPane extends JPanel {
                     image.setRGB(x, y, rgba);
                 }
             }
-        g.drawImage(image, 0, 0, this);
+            g.drawImage(image, 0, 0, this);
+        }
     }
 }

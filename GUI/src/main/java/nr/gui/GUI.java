@@ -5,7 +5,6 @@ import nr.commuteprovider.CommuteProvider;
 import nr.currentweatherprovider.CurrentWeatherProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.*;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
@@ -30,9 +29,9 @@ public class GUI {
 
     // Initial location data - can be configured via rest
 
-    String commuteStartLocation = "44.94638,-93.328981";
-    String commuteEndLocation = "44.807234,-93.355154";
-    String currentWeatherCityId = "5045021";
+    String commuteStartLocation = "";
+    String commuteEndLocation = "";
+    String currentWeatherCityId = "";
 
     // Some layout adjusters
 
@@ -47,8 +46,8 @@ public class GUI {
     final JPanel panel = new JPanel();
     private final Color white = new Color(0xFFFFFF);
 
-    JPanel backgroundPane;
-    JLabel currentWeatherIcon;
+    BackgroundPane backgroundPane = new BackgroundPane();
+    CurrentWeatherIconLabel currentWeatherIcon = new CurrentWeatherIconLabel();
     JLabel currentTemp;
     JLabel highLowTemps;
     JLabel windSpeed;
@@ -65,15 +64,11 @@ public class GUI {
         frame.setUndecorated(true);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        byte[] backgroundImage = backgroundImageProvider.getBackgroundImage();
-        backgroundPane = new BackgroundPane(backgroundImage);
         backgroundPane.setLayout(new GridLayout());
 
         panel.setOpaque(false);
         panel.setLayout(null);
 
-        currentWeatherIcon = new JLabel();
         currentWeatherIcon.setLocation(0,0);
         currentWeatherIcon.setSize(180,180);
         panel.add(currentWeatherIcon);

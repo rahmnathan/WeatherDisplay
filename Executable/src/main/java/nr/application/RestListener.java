@@ -12,6 +12,7 @@ class RestListener {
 
     @Autowired
     GUI gui;
+
     @Autowired
     GUIUpdater guiUpdater;
 

@@ -1,7 +1,6 @@
 package nr.application;
 
 import nr.gui.GUI;
-import nr.gui.GUIUpdater;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
