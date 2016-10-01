@@ -9,11 +9,9 @@ class CurrentWeatherIconLabel extends JLabel {
 
     private byte[] image;
 
-    public void setImage(byte[] image) {
+    void setImage(byte[] image) {
         this.image = image;
     }
-
-    public CurrentWeatherIconLabel(){}
 
     @Override
     public void paintComponent(Graphics g){

@@ -10,8 +10,6 @@ class BackgroundPane extends JPanel {
 
     private byte[] backgroundImage;
 
-    BackgroundPane(){}
-
     void setBackgroundImage(byte[] backgroundImage) {
         this.backgroundImage = backgroundImage;
     }

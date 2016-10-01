@@ -43,7 +43,7 @@ public class GUI {
     // Components of our GUI
 
     final JFrame frame = new JFrame("Weather Display");
-    final JPanel panel = new JPanel();
+    private final JPanel panel = new JPanel();
     private final Color white = new Color(0xFFFFFF);
 
     BackgroundPane backgroundPane = new BackgroundPane();

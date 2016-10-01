@@ -6,7 +6,6 @@ class TimestampAssembler {
 
     private final String[] dateTime = LocalDateTime.now().toString().split("T");
 
-
     String getDate(){
         String[] dateArray = dateTime[0].split("-");
         return dateArray[1] + "-" + dateArray[2] + "-" + dateArray[0];
