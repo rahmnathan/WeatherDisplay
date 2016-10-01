@@ -14,12 +14,14 @@ public class GUIUpdater {
 
     @Scheduled(fixedDelay = 5000)
     private void updateDateTime(){
-
         TimestampAssembler timestampAssembler = new TimestampAssembler();
 
-        gui.currentDate.setText(timestampAssembler.getDate());
+        if(gui.currentDate != null)
+            gui.currentDate.setText(timestampAssembler.getDate());
 
-        gui.currentTime.setText(timestampAssembler.getTime());
+        if(gui.currentTime != null)
+            gui.currentTime.setText(timestampAssembler.getTime());
+
         gui.frame.repaint();
     }
 
