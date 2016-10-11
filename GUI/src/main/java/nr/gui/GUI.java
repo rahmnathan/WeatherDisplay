@@ -70,7 +70,7 @@ public class GUI {
         panel.setLayout(null);
 
         currentWeatherIcon.setLocation(0,0);
-        currentWeatherIcon.setSize(180,180);
+        currentWeatherIcon.setSize(225,180);
         panel.add(currentWeatherIcon);
 
         currentTemp = new JLabel("Current Temp", SwingConstants.CENTER);

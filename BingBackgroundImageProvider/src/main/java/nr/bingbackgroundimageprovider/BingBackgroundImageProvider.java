@@ -22,7 +22,7 @@ public class BingBackgroundImageProvider implements BackgroundImageProvider {
         return getImage(getImageLink());
     }
 
-    private static String getImageLink(){
+    private String getImageLink(){
         String uri = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1";
         try{
             URL url = new URL(uri);
@@ -35,13 +35,10 @@ public class BingBackgroundImageProvider implements BackgroundImageProvider {
                 content += reader;
                 reader = br.readLine();
             }
-
             connection.disconnect();
 
             JSONObject json = new JSONObject(content);
-
             return ((JSONObject) (((JSONArray) json.get("images")).get(0))).get("url").toString();
-
         } catch (Exception e){
             e.printStackTrace();
             return null;
@@ -55,7 +52,6 @@ public class BingBackgroundImageProvider implements BackgroundImageProvider {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             return ByteStreams.toByteArray(connection.getInputStream());
-
         } catch (Exception e){
             e.printStackTrace();
             return null;

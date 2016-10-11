@@ -18,12 +18,10 @@ public class GoogleCommuteProvider implements CommuteProvider {
     }
 
     private JSONObject getCommuteContent(String startLocation, String endLocation){
-
         String key = "";
         try {
             String uri = "https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation +
                     "&destination=" + endLocation + "&key=" + key;
-
             URL url = new URL(uri);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -36,7 +34,6 @@ public class GoogleCommuteProvider implements CommuteProvider {
             }
 
             return new JSONObject(response);
-
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -44,11 +41,9 @@ public class GoogleCommuteProvider implements CommuteProvider {
     }
 
     private String getTime(JSONObject jsonObject){
-
         JSONObject firstRoute = ((JSONArray) jsonObject.get("routes")).getJSONObject(0);
         JSONObject legs = ((JSONArray) firstRoute.get("legs")).getJSONObject(0);
         JSONObject duration = (JSONObject) legs.get("duration");
         return duration.getString("text");
-
     }
 }

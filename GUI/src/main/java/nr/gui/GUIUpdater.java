@@ -41,7 +41,6 @@ public class GUIUpdater {
     @Scheduled(fixedDelay = 5000000)
     private void updateBackgroundImage(){
         byte[] backgroundImage = gui.backgroundImageProvider.getBackgroundImage();
-
         gui.backgroundPane.setBackgroundImage(backgroundImage);
         gui.backgroundPane.repaint();
         gui.frame.repaint();

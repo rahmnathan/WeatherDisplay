@@ -22,7 +22,6 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
 
     @Override
     public CurrentWeather getCurrentWeather(String cityId){
-
         return assembleCurrentWeather(getContent(cityId));
     }
 
@@ -33,7 +32,6 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
             JSONObject weather = (JSONObject) ((JSONArray) jsonObject.get("weather")).get(0);
             JSONObject main = (JSONObject) jsonObject.get("main");
             JSONObject wind = (JSONObject) jsonObject.get("wind");
-
             CurrentWeather.Builder builder = CurrentWeather.Builder.newInstance();
 
             builder
@@ -46,23 +44,19 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
                     .icon(getIcon((String) weather.get("icon")));
 
             currentWeather = builder.build();
-
         }catch(JSONException e){
             e.printStackTrace();
         }
-
         return currentWeather;
     }
 
     private JSONObject getContent(String cityId){
         URL url;
         String content = "";
-        String key = "eec5d76a469ca1a3b7feb0331b7543f9";
-
+        String key = "";
         try {
             url = new URL("http://api.openweathermap.org/data/2.5/weather?id=" + cityId +
                     "&units=imperial&appid=" + key);
-
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String reader = br.readLine();
@@ -74,18 +68,14 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
 
             br.close();
             connection.disconnect();
-
         } catch (IOException e){
             e.printStackTrace();
         }
-
         return new JSONObject(content);
     }
 
     private String getWindDirection(Number degreeInput){
-
         Integer degree = degreeInput.intValue();
-
         if(degree < 22.5 || degree > 337.5){
             return "North";
         } else if (degree < 67.5){
@@ -110,13 +100,11 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
     private byte[] getIcon(String iconCode){
         String imageUri = "http://openweathermap.org/img/w/" + iconCode + ".png";
         URL imageURL;
-
         try {
             imageURL = new URL(imageUri);
             HttpURLConnection connection = (HttpURLConnection) imageURL.openConnection();
             InputStream inputStream = connection.getInputStream();
             return ByteStreams.toByteArray(inputStream);
-
         } catch (Exception e){
             e.printStackTrace();
             return null;
