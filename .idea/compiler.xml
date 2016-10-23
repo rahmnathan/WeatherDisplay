@@ -34,8 +34,12 @@
         <module name="Executable" />
         <module name="GoogleCommuteProvider" />
         <module name="GUI" />
+        <module name="HttpImageProvider" />
+        <module name="OpenWeatherForecastProvider" />
         <module name="OpenWeatherMapCurrentWeatherProvider" />
+        <module name="OpenWeatherMapForecastProvider" />
         <module name="RestServer" />
+        <module name="WeatherForecastProviderAPI" />
         <module name="WeatherInfoProvider" />
       </profile>
     </annotationProcessing>
@@ -60,9 +64,13 @@
       <module name="GoogleCalendarProvider" target="1.8" />
       <module name="GoogleCommuteProvider" target="1.8" />
       <module name="GUI" target="1.8" />
+      <module name="HttpImageProvider" target="1.8" />
+      <module name="OpenWeatherForecastProvider" target="1.8" />
       <module name="OpenWeatherMapCurrentWeatherProvider" target="1.8" />
+      <module name="OpenWeatherMapForecastProvider" target="1.8" />
       <module name="RestServer" target="1.8" />
       <module name="WeatherDisplay" target="1.8" />
+      <module name="WeatherForecastProviderAPI" target="1.8" />
       <module name="WeatherInfoProvider" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -9,6 +9,9 @@
     <file url="file://$PROJECT_DIR$/Executable" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/GUI" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/GoogleCommuteProvider" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/HttpImageProvider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/OpenWeatherMapCurrentWeatherProvider" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/OpenWeatherMapForecastProvider" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/WeatherForecastProviderAPI" charset="UTF-8" />
   </component>
 </project>

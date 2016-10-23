@@ -13,12 +13,11 @@ import java.net.URL;
 @Service("GoogleCommute")
 public class GoogleCommuteProvider implements CommuteProvider {
 
-    public String getCommuteTime(String startLocation, String endLocation){
-        return getTime(getCommuteContent(startLocation, endLocation));
+    public String getCommuteTime(String startLocation, String endLocation, String key){
+        return getTime(getCommuteContent(startLocation, endLocation, key));
     }
 
-    private JSONObject getCommuteContent(String startLocation, String endLocation){
-        String key = "";
+    private JSONObject getCommuteContent(String startLocation, String endLocation, String key){
         try {
             String uri = "https://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation +
                     "&destination=" + endLocation + "&key=" + key;

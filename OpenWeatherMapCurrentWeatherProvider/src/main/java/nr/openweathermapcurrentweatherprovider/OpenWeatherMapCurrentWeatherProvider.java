@@ -1,8 +1,9 @@
 package nr.openweathermapcurrentweatherprovider;
 
-import com.google.common.io.ByteStreams;
 import nr.currentweatherprovider.CurrentWeather;
 import nr.currentweatherprovider.CurrentWeatherProvider;
+import nr.httpimageprovider.HttpImageProvider;
+import nr.httpimageprovider.WindDirection;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -21,8 +21,8 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
     public OpenWeatherMapCurrentWeatherProvider(){}
 
     @Override
-    public CurrentWeather getCurrentWeather(String cityId){
-        return assembleCurrentWeather(getContent(cityId));
+    public CurrentWeather getCurrentWeather(String cityId, String key){
+        return assembleCurrentWeather(getContent(cityId, key));
     }
 
     private CurrentWeather assembleCurrentWeather(JSONObject jsonObject){
@@ -38,10 +38,12 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
                     .highTemp(String.valueOf(main.get("temp_max")))
                     .lowTemp(String.valueOf(main.get("temp_min")))
                     .temp((String.valueOf(main.get("temp"))).split("\\.")[0])
-                    .windDirection(getWindDirection((Number) wind.get("deg")))
+                    .windDirection(WindDirection.degreesToWindDirection((Number) wind.get("deg")))
                     .windSpeed(String.valueOf(wind.get("speed")))
-                    .sky((String) weather.get("description"))
-                    .icon(getIcon((String) weather.get("icon")));
+                    .sky((String) weather.get("description"));
+
+            String iconUrl = "http://openweathermap.org/img/w/" + weather.getString("icon") + ".png";
+            builder.icon(HttpImageProvider.getImageFromHttp(iconUrl));
 
             currentWeather = builder.build();
         }catch(JSONException e){
@@ -50,10 +52,9 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
         return currentWeather;
     }
 
-    private JSONObject getContent(String cityId){
+    private JSONObject getContent(String cityId, String key){
         URL url;
         String content = "";
-        String key = "";
         try {
             url = new URL("http://api.openweathermap.org/data/2.5/weather?id=" + cityId +
                     "&units=imperial&appid=" + key);
@@ -72,42 +73,5 @@ public class OpenWeatherMapCurrentWeatherProvider implements CurrentWeatherProvi
             e.printStackTrace();
         }
         return new JSONObject(content);
-    }
-
-    private String getWindDirection(Number degreeInput){
-        Integer degree = degreeInput.intValue();
-        if(degree < 22.5 || degree > 337.5){
-            return "North";
-        } else if (degree < 67.5){
-            return "NE";
-        } else if (degree < 117.5){
-            return "East";
-        } else if (degree < 157.5){
-            return "SE";
-        } else if (degree < 202.5){
-            return "South";
-        } else if (degree < 247.5){
-            return "SW";
-        } else if (degree < 292.5){
-            return "West";
-        } else if (degree < 337.5){
-            return "NW";
-        } else{
-            return "N/A";
-        }
-    }
-
-    private byte[] getIcon(String iconCode){
-        String imageUri = "http://openweathermap.org/img/w/" + iconCode + ".png";
-        URL imageURL;
-        try {
-            imageURL = new URL(imageUri);
-            HttpURLConnection connection = (HttpURLConnection) imageURL.openConnection();
-            InputStream inputStream = connection.getInputStream();
-            return ByteStreams.toByteArray(inputStream);
-        } catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
     }
 }

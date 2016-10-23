@@ -11,18 +11,21 @@
 
     <properties>
         <java.version>1.8</java.version>
-  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <modules>
         <module>Executable</module>
         <module>GUI</module>
         <module>OpenWeatherMapCurrentWeatherProvider</module>
+        <module>OpenWeatherMapForecastProvider</module>
         <module>BingBackgroundImageProvider</module>
         <module>GoogleCommuteProvider</module>
         <module>CommuteProviderAPI</module>
         <module>BackgroundImageProviderAPI</module>
         <module>CurrentWeatherProviderAPI</module>
+        <module>WeatherForecastProviderAPI</module>
+        <module>HttpImageProvider</module>
     </modules>
 
     <dependencies>

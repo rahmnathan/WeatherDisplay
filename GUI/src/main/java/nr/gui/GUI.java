@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class GUI {
@@ -29,9 +33,9 @@ public class GUI {
 
     // Initial location data - can be configured via rest
 
-    String commuteStartLocation = "";
-    String commuteEndLocation = "";
-    String currentWeatherCityId = "";
+    String commuteStartLocation = "44.94638,-93.328981";
+    String commuteEndLocation = "44.807234,-93.355154";
+    static String currentWeatherCityId = "5045021";
 
     // Some layout adjusters
 
@@ -39,15 +43,17 @@ public class GUI {
     private final int dateTimeVertical = 0;
     private final int currentWeatherHorizontal = 220;
     private final int currentWeatherVertical = 20;
+    final static int forecastDays = 5;
 
     // Components of our GUI
 
     final JFrame frame = new JFrame("Weather Display");
     private final JPanel panel = new JPanel();
     private final Color white = new Color(0xFFFFFF);
+    static Map<Integer, Map<String, JLabel>> labelMap = new HashMap<>();
 
     BackgroundPane backgroundPane = new BackgroundPane();
-    CurrentWeatherIconLabel currentWeatherIcon = new CurrentWeatherIconLabel();
+    WeatherIconLabel currentWeatherIcon = new WeatherIconLabel();
     JLabel currentTemp;
     JLabel highLowTemps;
     JLabel windSpeed;
@@ -70,7 +76,8 @@ public class GUI {
         panel.setLayout(null);
 
         currentWeatherIcon.setLocation(0,0);
-        currentWeatherIcon.setSize(225,180);
+        currentWeatherIcon.setImageSize(250);
+        currentWeatherIcon.setSize(225,225);
         panel.add(currentWeatherIcon);
 
         currentTemp = new JLabel("Current Temp", SwingConstants.CENTER);
@@ -136,11 +143,65 @@ public class GUI {
         commute.setForeground(white);
         panel.add(commute);
 
+        buildForecast();
+
         backgroundPane.add(panel);
 
         frame.add(backgroundPane);
         frame.pack();
         frame.setVisible(true);
+    }
+
+    private void buildForecast(){
+        int horizontalLocation = 0;
+        int verticalLocation = 330;
+        int fontSize = 27;
+
+        for(int i = 0; i < forecastDays; i++) {
+            Map<String, JLabel> forecastLabelMap = new HashMap<>();
+
+            JLabel day = new JLabel("Day", SwingConstants.CENTER);
+            day.setSize(200, 50);
+            day.setLocation(horizontalLocation, verticalLocation + 40);
+            day.setFont(new Font("Serif", Font.BOLD, fontSize + 3));
+            day.setForeground(white);
+            forecastLabelMap.put("Day", day);
+            panel.add(day);
+
+            WeatherIconLabel forecastIcon = new WeatherIconLabel();
+            forecastIcon.setImageSize(180);
+            forecastIcon.setSize(180, 180);
+            forecastIcon.setLocation(horizontalLocation, verticalLocation + 60);
+            forecastLabelMap.put("Icon", forecastIcon);
+            panel.add(forecastIcon);
+
+            JLabel highTemp = new JLabel("Temp", SwingConstants.CENTER);
+            highTemp.setSize(200, 50);
+            highTemp.setLocation(horizontalLocation, verticalLocation + 200);
+            highTemp.setFont(new Font("Serif", Font.BOLD, fontSize));
+            highTemp.setForeground(white);
+            forecastLabelMap.put("Temp", highTemp);
+            panel.add(highTemp);
+
+            JLabel description = new JLabel("Description", SwingConstants.CENTER);
+            description.setSize(200, 50);
+            description.setLocation(horizontalLocation, verticalLocation + 230);
+            description.setFont(new Font("Serif", Font.BOLD, fontSize));
+            description.setForeground(white);
+            forecastLabelMap.put("Description", description);
+            panel.add(description);
+
+            JLabel windSpeed = new JLabel("WindSpeed", SwingConstants.CENTER);
+            windSpeed.setLocation(horizontalLocation, verticalLocation + 260);
+            windSpeed.setSize(200, 50);
+            windSpeed.setFont(new Font("Serif", Font.BOLD, fontSize));
+            windSpeed.setForeground(white);
+            forecastLabelMap.put("WindSpeed", windSpeed);
+            panel.add(windSpeed);
+
+            labelMap.put(i, forecastLabelMap);
+            horizontalLocation += 210;
+        }
     }
 
     public void setCommuteStartLocation(String startLocation){
