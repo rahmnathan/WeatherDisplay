@@ -7,11 +7,16 @@ To use:
 
 2) Create a weatherdisplay.properties file under the WeatherDisplay/Executable/src/main/resources/  directory
 
-3) Enter properties as follows with no spaces:
+3) Enter properties as follows, each on their own line, with no spaces:
+
   start=(commute-start-coordinates)
+  
   end=(commute-end-coordinates)
+  
   key=(google-maps-key)
+  
   weatherKey=(open-weather-map-key)
+  
   cityID=(open-weather-map-city-ID)
 
 4) Save the file
