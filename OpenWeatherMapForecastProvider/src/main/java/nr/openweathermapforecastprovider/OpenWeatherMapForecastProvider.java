@@ -1,6 +1,6 @@
 package nr.openweathermapforecastprovider;
 
-import nr.httpimageprovider.HttpImageProvider;
+import nr.weatherutils.HttpImageProvider;
 import nr.weatherforecastprovider.WeatherSummary;
 import org.json.JSONArray;
 import org.json.JSONObject;

@@ -25,7 +25,7 @@
         <module>BackgroundImageProviderAPI</module>
         <module>CurrentWeatherProviderAPI</module>
         <module>WeatherForecastProviderAPI</module>
-        <module>HttpImageProvider</module>
+        <module>WeatherUtils</module>
     </modules>
 
     <dependencies>

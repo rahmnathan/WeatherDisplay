@@ -1,7 +1,7 @@
 package nr.gui;
 
 import nr.currentweatherprovider.CurrentWeather;
-import nr.httpimageprovider.DayOfWeekProvider;
+import nr.weatherutils.DayOfWeekProvider;
 import nr.openweathermapforecastprovider.OpenWeatherMapForecastProviderFacade;
 import nr.weatherforecastprovider.WeatherSummary;
 import org.apache.commons.lang3.text.WordUtils;

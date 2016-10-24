@@ -2,8 +2,8 @@ package nr.openweathermapcurrentweatherprovider;
 
 import nr.currentweatherprovider.CurrentWeather;
 import nr.currentweatherprovider.CurrentWeatherProvider;
-import nr.httpimageprovider.HttpImageProvider;
-import nr.httpimageprovider.WindDirection;
+import nr.weatherutils.HttpImageProvider;
+import nr.weatherutils.WindDirection;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package nr.httpimageprovider;
+package nr.weatherutils;
 
 public class WindDirection {
 
