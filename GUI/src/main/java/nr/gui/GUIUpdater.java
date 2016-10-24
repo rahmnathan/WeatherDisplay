@@ -2,6 +2,7 @@ package nr.gui;
 
 import nr.currentweatherprovider.CurrentWeather;
 import nr.initialization.PropertyLoader;
+import nr.weatherforecastprovider.WeatherForecastProvider;
 import nr.weatherutils.DayOfWeekProvider;
 import nr.openweathermapforecastprovider.OpenWeatherMapForecastProviderFacade;
 import nr.weatherforecastprovider.WeatherSummary;
@@ -69,7 +70,7 @@ public class GUIUpdater {
 
     @Scheduled(fixedDelay = 5000000, initialDelay = 2000)
     public void updateForecast(){
-        OpenWeatherMapForecastProviderFacade providerFacade = new OpenWeatherMapForecastProviderFacade();
+        WeatherForecastProvider providerFacade = new OpenWeatherMapForecastProviderFacade();
         List<WeatherSummary> weatherSummaryList = providerFacade.getWeatherForecast(GUI.forecastDays,
                 Integer.valueOf(PropertyLoader.getCurrentWeatherCityId()), PropertyLoader.getOpenWeatherMapKey());
 
