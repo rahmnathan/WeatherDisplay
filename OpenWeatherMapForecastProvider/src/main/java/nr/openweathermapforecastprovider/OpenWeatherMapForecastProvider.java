@@ -15,10 +15,10 @@ import java.util.List;
 
 class OpenWeatherMapForecastProvider {
 
-    JSONObject getJsonFromOpenWeatherMap(int cityId, int days) {
+    JSONObject getJsonFromOpenWeatherMap(int cityId, int days, String key) {
         String finalInput = "";
         try {
-            URL url = new URL("http://api.openweathermap.org/data/2.5/forecast/daily?id=" + cityId + "&cnt=" + days + "&units=imperial&appid=eec5d76a469ca1a3b7feb0331b7543f9");
+            URL url = new URL("http://api.openweathermap.org/data/2.5/forecast/daily?id=" + cityId + "&cnt=" + days + "&units=imperial&appid=" + key);
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));

@@ -1,6 +1,7 @@
 package nr.gui;
 
 import nr.currentweatherprovider.CurrentWeather;
+import nr.initialization.PropertyLoader;
 import nr.weatherutils.DayOfWeekProvider;
 import nr.openweathermapforecastprovider.OpenWeatherMapForecastProviderFacade;
 import nr.weatherforecastprovider.WeatherSummary;
@@ -18,13 +19,10 @@ import java.util.Map;
 @Component
 public class GUIUpdater {
 
-    private final String openWeatherMapKey = "";
-    private final String googleCommuteKey = "";
-
     @Autowired
     private GUI gui;
 
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 5000, initialDelay = 2000)
     private void updateDateTime(){
         TimestampAssembler timestampAssembler = new TimestampAssembler();
 
@@ -37,9 +35,11 @@ public class GUIUpdater {
         gui.frame.repaint();
     }
 
-    @Scheduled(fixedDelay = 500000)
+    @Scheduled(fixedDelay = 500000, initialDelay = 2000)
     public void updateCurrentWeather(){
-        CurrentWeather currentWeather = gui.currentWeatherProvider.getCurrentWeather(GUI.currentWeatherCityId, openWeatherMapKey);
+        CurrentWeather currentWeather = gui.currentWeatherProvider.getCurrentWeather(PropertyLoader.getCurrentWeatherCityId(),
+                PropertyLoader.getOpenWeatherMapKey());
+
         gui.currentTemp.setText(currentWeather.getTemp() + "°F");
         gui.windDirection.setText(currentWeather.getWindDirection());
         gui.highLowTemps.setText(currentWeather.getLowTemp().split("\\.")[0] + "°F/" + currentWeather.getHighTemp().split("\\.")[0] + "°F");
@@ -50,7 +50,7 @@ public class GUIUpdater {
         gui.frame.repaint();
     }
 
-    @Scheduled(fixedDelay = 5000000)
+    @Scheduled(fixedDelay = 5000000, initialDelay = 2000)
     private void updateBackgroundImage(){
         byte[] backgroundImage = gui.backgroundImageProvider.getBackgroundImage();
         gui.backgroundPane.setBackgroundImage(backgroundImage);
@@ -58,18 +58,21 @@ public class GUIUpdater {
         gui.frame.repaint();
     }
 
-    @Scheduled(fixedDelay = 500000)
+    @Scheduled(fixedDelay = 500000, initialDelay = 2000)
     public void updateCommute() {
-        String commute = gui.commuteProvider.getCommuteTime(gui.commuteStartLocation, gui.commuteEndLocation, googleCommuteKey);
+        String commute = gui.commuteProvider.getCommuteTime(PropertyLoader.getCommuteStartLocation(),
+                PropertyLoader.getCommuteEndLocation(), PropertyLoader.getGoogleCommuteKey());
+
         gui.commuteTime.setText("<html><center>" + commute + "</center><html>");
         gui.frame.repaint();
     }
 
-    @Scheduled(fixedDelay = 5000000)
+    @Scheduled(fixedDelay = 5000000, initialDelay = 2000)
     public void updateForecast(){
-
         OpenWeatherMapForecastProviderFacade providerFacade = new OpenWeatherMapForecastProviderFacade();
-        List<WeatherSummary> weatherSummaryList = providerFacade.getWeatherForecast(GUI.forecastDays, Integer.valueOf(GUI.currentWeatherCityId));
+        List<WeatherSummary> weatherSummaryList = providerFacade.getWeatherForecast(GUI.forecastDays,
+                Integer.valueOf(PropertyLoader.getCurrentWeatherCityId()), PropertyLoader.getOpenWeatherMapKey());
+
         Calendar calendar = Calendar.getInstance();
         int dayOfWeek = 0;
         for(WeatherSummary summary : weatherSummaryList) {

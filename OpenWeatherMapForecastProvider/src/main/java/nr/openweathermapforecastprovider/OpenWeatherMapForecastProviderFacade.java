@@ -9,10 +9,10 @@ import java.util.List;
 public class OpenWeatherMapForecastProviderFacade implements WeatherForecastProvider {
 
     @Override
-    public List<WeatherSummary> getWeatherForecast(int days, int cityId) {
+    public List<WeatherSummary> getWeatherForecast(int days, int cityId, String key) {
         OpenWeatherMapForecastProvider forecastProvider = new OpenWeatherMapForecastProvider();
 
-        JSONObject forecastInJson = forecastProvider.getJsonFromOpenWeatherMap(cityId, days);
+        JSONObject forecastInJson = forecastProvider.getJsonFromOpenWeatherMap(cityId, days, key);
         return forecastProvider.jsonToWeatherSummaries(forecastInJson);
     }
 }

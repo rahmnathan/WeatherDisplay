@@ -31,12 +31,6 @@ public class GUI {
     @Qualifier("GoogleCommute")
     CommuteProvider commuteProvider;
 
-    // Initial location data - can be configured via rest
-
-    String commuteStartLocation = "";
-    String commuteEndLocation = "";
-    static String currentWeatherCityId = "";
-
     // Some layout adjusters
 
     private final int dateTimeHorizontal = 860;
@@ -202,15 +196,5 @@ public class GUI {
             labelMap.put(i, forecastLabelMap);
             horizontalLocation += 180;
         }
-    }
-
-    public void setCommuteStartLocation(String startLocation){
-        commuteStartLocation = startLocation;
-    }
-    public void setCommuteEndLocation(String endLocation){
-        commuteEndLocation = endLocation;
-    }
-    public void setCurrentWeatherCityId(String CityId) {
-        currentWeatherCityId = CityId;
     }
 }
