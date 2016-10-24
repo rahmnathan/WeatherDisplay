@@ -33,9 +33,9 @@ public class GUI {
 
     // Initial location data - can be configured via rest
 
-    String commuteStartLocation = "44.94638,-93.328981";
-    String commuteEndLocation = "44.807234,-93.355154";
-    static String currentWeatherCityId = "5045021";
+    String commuteStartLocation = "";
+    String commuteEndLocation = "";
+    static String currentWeatherCityId = "";
 
     // Some layout adjusters
 
@@ -43,7 +43,7 @@ public class GUI {
     private final int dateTimeVertical = 0;
     private final int currentWeatherHorizontal = 220;
     private final int currentWeatherVertical = 20;
-    final static int forecastDays = 5;
+    final static int forecastDays = 4;
 
     // Components of our GUI
 
@@ -154,15 +154,15 @@ public class GUI {
 
     private void buildForecast(){
         int horizontalLocation = 0;
-        int verticalLocation = 330;
-        int fontSize = 27;
+        int verticalLocation = 480;
+        int fontSize = 24;
 
         for(int i = 0; i < forecastDays; i++) {
             Map<String, JLabel> forecastLabelMap = new HashMap<>();
 
             JLabel day = new JLabel("Day", SwingConstants.CENTER);
             day.setSize(200, 50);
-            day.setLocation(horizontalLocation, verticalLocation + 40);
+            day.setLocation(horizontalLocation, verticalLocation + 50);
             day.setFont(new Font("Serif", Font.BOLD, fontSize + 3));
             day.setForeground(white);
             forecastLabelMap.put("Day", day);
@@ -171,13 +171,13 @@ public class GUI {
             WeatherIconLabel forecastIcon = new WeatherIconLabel();
             forecastIcon.setImageSize(180);
             forecastIcon.setSize(180, 180);
-            forecastIcon.setLocation(horizontalLocation, verticalLocation + 60);
+            forecastIcon.setLocation(horizontalLocation, verticalLocation + 70);
             forecastLabelMap.put("Icon", forecastIcon);
             panel.add(forecastIcon);
 
             JLabel highTemp = new JLabel("Temp", SwingConstants.CENTER);
             highTemp.setSize(200, 50);
-            highTemp.setLocation(horizontalLocation, verticalLocation + 200);
+            highTemp.setLocation(horizontalLocation, verticalLocation + 210);
             highTemp.setFont(new Font("Serif", Font.BOLD, fontSize));
             highTemp.setForeground(white);
             forecastLabelMap.put("Temp", highTemp);
@@ -185,14 +185,14 @@ public class GUI {
 
             JLabel description = new JLabel("Description", SwingConstants.CENTER);
             description.setSize(200, 50);
-            description.setLocation(horizontalLocation, verticalLocation + 230);
+            description.setLocation(horizontalLocation, verticalLocation + 240);
             description.setFont(new Font("Serif", Font.BOLD, fontSize));
             description.setForeground(white);
             forecastLabelMap.put("Description", description);
             panel.add(description);
 
             JLabel windSpeed = new JLabel("WindSpeed", SwingConstants.CENTER);
-            windSpeed.setLocation(horizontalLocation, verticalLocation + 260);
+            windSpeed.setLocation(horizontalLocation, verticalLocation + 270);
             windSpeed.setSize(200, 50);
             windSpeed.setFont(new Font("Serif", Font.BOLD, fontSize));
             windSpeed.setForeground(white);
@@ -200,7 +200,7 @@ public class GUI {
             panel.add(windSpeed);
 
             labelMap.put(i, forecastLabelMap);
-            horizontalLocation += 210;
+            horizontalLocation += 180;
         }
     }
 

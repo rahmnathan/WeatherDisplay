@@ -18,8 +18,8 @@ import java.util.Map;
 @Component
 public class GUIUpdater {
 
-    private final String openWeatherMapKey = "eec5d76a469ca1a3b7feb0331b7543f9";
-    private final String googleCommuteKey = "AIzaSyCJNMBAobikR_slei0YiXZdqCgdvoFHO_Q";
+    private final String openWeatherMapKey = "";
+    private final String googleCommuteKey = "";
 
     @Autowired
     private GUI gui;
