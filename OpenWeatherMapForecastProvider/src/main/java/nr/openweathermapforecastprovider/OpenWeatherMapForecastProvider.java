@@ -1,5 +1,8 @@
 package nr.openweathermapforecastprovider;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import nr.weatherutils.HttpImageProvider;
 import nr.weatherforecastprovider.WeatherSummary;
 import org.json.JSONArray;
@@ -12,8 +15,20 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 class OpenWeatherMapForecastProvider {
+
+    private LoadingCache<String, byte[]> icons =
+            CacheBuilder.newBuilder()
+            .maximumSize(100)
+                        .build(
+                                new CacheLoader<String, byte[]>() {
+        @Override
+        public byte[] load(String url) {
+            return HttpImageProvider.getImageFromHttp(url);
+        }
+    });
 
     JSONObject getJsonFromOpenWeatherMap(int cityId, int days, String key) {
         String finalInput = "";
@@ -53,7 +68,11 @@ class OpenWeatherMapForecastProvider {
             builder.setSky(weatherObject.getString("main"));
 
             String iconUrl = "http://openweathermap.org/img/w/" + weatherObject.getString("icon") + ".png";
-            builder.setIcon(HttpImageProvider.getImageFromHttp(iconUrl));
+            try {
+                builder.setIcon(icons.get(iconUrl));
+            } catch (ExecutionException e){
+                e.printStackTrace();
+            }
 
             summaryList.add(builder.build());
         }
