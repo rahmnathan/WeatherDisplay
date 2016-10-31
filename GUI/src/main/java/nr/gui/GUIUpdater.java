@@ -1,6 +1,8 @@
 package nr.gui;
 
+import com.google.api.services.calendar.model.Event;
 import nr.currentweatherprovider.CurrentWeather;
+import nr.google.calendar.GoogleCalendar;
 import nr.initialization.PropertyLoader;
 import nr.weatherforecastprovider.WeatherForecastProvider;
 import nr.weatherutils.DayOfWeekProvider;
@@ -12,6 +14,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import javax.swing.JLabel;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +25,8 @@ public class GUIUpdater {
 
     @Autowired
     private GUI gui;
+
+    private GoogleCalendar calendar = new GoogleCalendar();
 
     @Scheduled(fixedDelay = 5000, initialDelay = 2000)
     private void updateDateTime(){
@@ -102,5 +107,17 @@ public class GUIUpdater {
 
             dayOfWeek++;
         }
+    }
+
+    @Scheduled(fixedDelay = 10000, initialDelay = 2000)
+    public void updateCalendar(){
+        try {
+            calendar.initializeCalendar();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        Event first = calendar.getEventList().get(0);
+        gui.calendarEvent.setText(first.getStart().getDateTime().toString().substring(0, 10) + "\n" + first.getSummary());
+        gui.frame.repaint();
     }
 }

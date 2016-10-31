@@ -56,6 +56,7 @@ public class GUI {
     JLabel weatherDescription;
     JLabel currentDate;
     JLabel commuteTime;
+    JLabel calendarEvent;
 
     public GUI(){}
 
@@ -136,6 +137,13 @@ public class GUI {
         commute.setFont(new Font("Serif", Font.BOLD, 30));
         commute.setForeground(white);
         panel.add(commute);
+
+        calendarEvent = new JLabel("Calendar");
+        calendarEvent.setSize(400, 200);
+        calendarEvent.setLocation(750, 450);
+        calendarEvent.setForeground(white);
+        calendarEvent.setFont(new Font("Serif", Font.BOLD, 20));
+        panel.add(calendarEvent);
 
         buildForecast();
 
