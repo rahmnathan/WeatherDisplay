@@ -33,7 +33,7 @@
         </dependency>
         <dependency>
             <groupId>nr.weatherdisplay</groupId>
-            <artifactId>CurrentWeatherProvider</artifactId>
+            <artifactId>CurrentWeatherProviderAPI</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -43,7 +43,7 @@
         </dependency>
         <dependency>
             <groupId>nr.weatherdisplay</groupId>
-            <artifactId>CommuteProvider</artifactId>
+            <artifactId>CommuteProviderAPI</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
