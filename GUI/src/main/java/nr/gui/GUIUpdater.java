@@ -109,15 +109,15 @@ public class GUIUpdater {
         }
     }
 
-    @Scheduled(fixedDelay = 10000, initialDelay = 2000)
-    public void updateCalendar(){
-        try {
-            calendar.initializeCalendar();
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-        Event first = calendar.getEventList().get(0);
-        gui.calendarEvent.setText(first.getStart().getDateTime().toString().substring(0, 10) + "\n" + first.getSummary());
-        gui.frame.repaint();
-    }
+//    @Scheduled(fixedDelay = 10000, initialDelay = 2000)
+//    public void updateCalendar(){
+//        try {
+//            calendar.initializeCalendar();
+//        }catch(IOException e){
+//            e.printStackTrace();
+//        }
+//        Event first = calendar.getEventList().get(0);
+//        gui.calendarEvent.setText(first.getStart().getDateTime().toString().substring(0, 10) + "\n" + first.getSummary());
+//        gui.frame.repaint();
+//    }
 }

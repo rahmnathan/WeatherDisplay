@@ -33,7 +33,7 @@ public class GUI {
 
     // Some layout adjusters
 
-    private final int dateTimeHorizontal = 860;
+    private final int dateTimeHorizontal = 1000;
     private final int dateTimeVertical = 0;
     private final int currentWeatherHorizontal = 220;
     private final int currentWeatherVertical = 20;
@@ -119,31 +119,31 @@ public class GUI {
 
         currentDate = new JLabel("Current Date", SwingConstants.CENTER);
         currentDate.setSize(400, 110);
-        currentDate.setLocation(dateTimeHorizontal + 50, dateTimeVertical + 100);
+        currentDate.setLocation(dateTimeHorizontal + 45, dateTimeVertical + 100);
         currentDate.setFont(new Font("Serif", Font.BOLD, 40));
         currentDate.setForeground(white);
         panel.add(currentDate);
 
         commuteTime = new JLabel("Commute Time", SwingConstants.CENTER);
         commuteTime.setSize(250, 60);
-        commuteTime.setLocation(470, 90);
+        commuteTime.setLocation(450, 90);
         commuteTime.setFont(new Font("Serif", Font.BOLD, 40));
         commuteTime.setForeground(white);
         panel.add(commuteTime);
 
         JLabel commute = new JLabel("Commute", SwingConstants.CENTER);
         commute.setSize(175, 100);
-        commute.setLocation(510, 10);
+        commute.setLocation(490, 10);
         commute.setFont(new Font("Serif", Font.BOLD, 30));
         commute.setForeground(white);
         panel.add(commute);
 
-        calendarEvent = new JLabel("Calendar");
-        calendarEvent.setSize(400, 200);
-        calendarEvent.setLocation(750, 450);
-        calendarEvent.setForeground(white);
-        calendarEvent.setFont(new Font("Serif", Font.BOLD, 20));
-        panel.add(calendarEvent);
+//        calendarEvent = new JLabel("Calendar");
+//        calendarEvent.setSize(400, 200);
+//        calendarEvent.setLocation(750, 450);
+//        calendarEvent.setForeground(white);
+//        calendarEvent.setFont(new Font("Serif", Font.BOLD, 20));
+//        panel.add(calendarEvent);
 
         buildForecast();
 
@@ -202,7 +202,7 @@ public class GUI {
             panel.add(windSpeed);
 
             labelMap.put(i, forecastLabelMap);
-            horizontalLocation += 180;
+            horizontalLocation += 160;
         }
     }
 }
