@@ -33,11 +33,11 @@ public class GUI {
 
     // Some layout adjusters
 
-    private final int dateTimeHorizontal = 1000;
+    private final int dateTimeHorizontal = 990;
     private final int dateTimeVertical = 0;
-    private final int currentWeatherHorizontal = 220;
+    private final int currentWeatherHorizontal = 235;
     private final int currentWeatherVertical = 20;
-    final static int forecastDays = 4;
+    final static int forecastDays = 5;
 
     // Components of our GUI
 
@@ -72,7 +72,7 @@ public class GUI {
 
         currentWeatherIcon.setLocation(0,0);
         currentWeatherIcon.setImageSize(250);
-        currentWeatherIcon.setSize(225,225);
+        currentWeatherIcon.setSize(250,250);
         panel.add(currentWeatherIcon);
 
         currentTemp = new JLabel("Current Temp", SwingConstants.CENTER);
@@ -164,7 +164,7 @@ public class GUI {
 
             JLabel day = new JLabel("Day", SwingConstants.CENTER);
             day.setSize(200, 50);
-            day.setLocation(horizontalLocation, verticalLocation + 50);
+            day.setLocation(horizontalLocation - 5, verticalLocation + 50);
             day.setFont(new Font("Serif", Font.BOLD, fontSize + 3));
             day.setForeground(white);
             forecastLabelMap.put("Day", day);
@@ -179,7 +179,7 @@ public class GUI {
 
             JLabel highTemp = new JLabel("Temp", SwingConstants.CENTER);
             highTemp.setSize(200, 50);
-            highTemp.setLocation(horizontalLocation, verticalLocation + 210);
+            highTemp.setLocation(horizontalLocation - 10, verticalLocation + 210);
             highTemp.setFont(new Font("Serif", Font.BOLD, fontSize));
             highTemp.setForeground(white);
             forecastLabelMap.put("Temp", highTemp);
@@ -187,19 +187,19 @@ public class GUI {
 
             JLabel description = new JLabel("Description", SwingConstants.CENTER);
             description.setSize(200, 50);
-            description.setLocation(horizontalLocation, verticalLocation + 240);
+            description.setLocation(horizontalLocation - 10, verticalLocation + 240);
             description.setFont(new Font("Serif", Font.BOLD, fontSize));
             description.setForeground(white);
             forecastLabelMap.put("Description", description);
             panel.add(description);
 
-            JLabel windSpeed = new JLabel("WindSpeed", SwingConstants.CENTER);
-            windSpeed.setLocation(horizontalLocation, verticalLocation + 270);
-            windSpeed.setSize(200, 50);
-            windSpeed.setFont(new Font("Serif", Font.BOLD, fontSize));
-            windSpeed.setForeground(white);
-            forecastLabelMap.put("WindSpeed", windSpeed);
-            panel.add(windSpeed);
+//            JLabel windSpeed = new JLabel("WindSpeed", SwingConstants.CENTER);
+//            windSpeed.setLocation(horizontalLocation, verticalLocation + 270);
+//            windSpeed.setSize(200, 50);
+//            windSpeed.setFont(new Font("Serif", Font.BOLD, fontSize));
+//            windSpeed.setForeground(white);
+//            forecastLabelMap.put("WindSpeed", windSpeed);
+//            panel.add(windSpeed);
 
             labelMap.put(i, forecastLabelMap);
             horizontalLocation += 160;

@@ -101,9 +101,9 @@ public class GUIUpdater {
             description.setText(summary.getSky());
             description.repaint();
 
-            JLabel windSpeed = entries.get("WindSpeed");
-            windSpeed.setText(String.valueOf(summary.getWindSpeed()) + " MPH");
-            windSpeed.repaint();
+//            JLabel windSpeed = entries.get("WindSpeed");
+//            windSpeed.setText(String.valueOf(summary.getWindSpeed()) + " MPH");
+//            windSpeed.repaint();
 
             dayOfWeek++;
         }
